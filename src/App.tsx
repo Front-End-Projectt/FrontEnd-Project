@@ -1,15 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import HomePage from './Component/SideNav'
-import './App.css'
 import SideNav from './Component/SideNav'
+import { Route, Routes } from 'react-router-dom'
+import './App.css'
+import Diagnosis from './Component/Diagnosis'
 
 function App() {
 
   return (
-    <div className="App">
+    <>
       <SideNav children={undefined}/>
-    </div>
+    <Routes>
+      <Route path='diagnosis' element={<Diagnosis/>}></Route>
+    </Routes>
+    </>
   )
 }
 
