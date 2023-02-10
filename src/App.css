@@ -1,0 +1,14 @@
+.div-input-register{
+  border: 1px black solid;
+  width: 40%;
+  padding: 10px;
+  
+}
+.input-register{
+  /* width: 40%;
+  padding: 10px; */
+  border: 1px black solid;
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
+}
