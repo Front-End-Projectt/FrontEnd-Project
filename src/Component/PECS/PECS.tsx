@@ -3,9 +3,12 @@ import React, { ReactNode } from 'react'
 import { StarIcon, DeleteIcon } from '@chakra-ui/icons'
 import categories from './Categories'
 import Categories from './Categories'
+import { Route, Routes } from 'react-router-dom'
+import Cards from './Cards'
 
 
 function PECS( ) {
+  
 
   return (
     <>
@@ -17,8 +20,13 @@ function PECS( ) {
               <IconButton size="lg" variant="ghost" icon={<DeleteIcon />} aria-label={''}/>
             </Flex>
         </Flex>
-        <SimpleGrid pt={10} columns={[1, 2, 2, 3, 4]} spacing='40px'>
-          <Categories />
+        <SimpleGrid pt={10} columns={[2, 3, 4, 5]} spacing='40px'>
+
+          <Routes>
+            <Route path='/Categories' element={<Categories/>}/>
+            <Route path='/Cards' element={<Cards/>}/>
+          </Routes>
+
         </SimpleGrid>
     </>
   )

@@ -18,7 +18,7 @@ import {
     ButtonGroup,
     Divider,
   } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
   type Categ = {
     data:{
@@ -32,25 +32,27 @@ import { useState } from 'react';
     title: 'الضمائر',
   },
 ];
-const maping = PECSs.map((e) => 
-  <Card key={e.title}  maxW='sm' textAlign={"center"} borderRadius={30}>
+
+
+
+function Categories() {
+  const navigate = useNavigate();
+  return (
+      <>
+          {PECSs.map((e) => 
+  <Card key={e.title}  maxW='sm' textAlign={"center"} borderRadius={30}  cursor={"pointer"} onClick={()=>navigate("/Cards")}>
+    {/* onClick={navigate("/Categories")} */}
       <CardBody>
           <Image
           src= {e.img}
-          alt='Green double couch with wooden legs'
-          borderRadius='lg'
+          alt={`${e.title}`}
           />
              <Heading mt='6' size='md'>{e.title}</Heading>
       </CardBody>
   </Card>
-          )
-  function categories() {
-
-    return (
-        <>
-            {maping}
-        </>
-    );
-  }
+  )}
+      </>
+  );
+}
   
-  export default categories;
+  export default Categories;
