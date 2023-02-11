@@ -1,20 +1,21 @@
-import { useState } from 'react'
-import HomePage from './Component/SideNav'
-import './App.css'
+import { Route, Routes } from 'react-router-dom'
+import Buttons from './Component/Authentication/Buttons'
+import Register from './Component/Authentication/Register'
+import SignIn from './Component/Authentication/SignIn'
+import Diagnosis from './Component/Diagnosis'
 import SideNav from './Component/SideNav'
-import PECS from './Component/PECS/PECS'
-import Categories from './Component/PECS/Categories'
-// import { useState } from 'react';
 
-
-  
-  
-  function App() {
-    
+function App() {
 
   return (
     <>
-      <SideNav children={<PECS/>}/>
+    <Routes>
+      
+      <Route path='SideNav' element={<SideNav comp={<Buttons/>} children={undefined}/>}></Route>
+      <Route path='diagnosis' element={<Diagnosis/>}></Route>
+      <Route path='register' element={<Register/>}></Route>
+      <Route path='signIn' element={<SignIn/>}></Route>
+    </Routes>
     </>
   )
 }
