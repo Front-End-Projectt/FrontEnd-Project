@@ -22,10 +22,21 @@ import {
     MenuList,
     Button,
   } from '@chakra-ui/react';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FiChevronDown } from 'react-icons/fi'
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
+  const [refresh, setRefresh] = React.useReducer(x => x + 1, 0)
+  const navigate = useNavigate();
+
+  const SignOut = () =>{
+    localStorage.setItem("isLogIn", "false")
+    localStorage.removeItem("id")
+ }
+ React.useEffect(()=> {
+   
+ })
   return (
 
 
@@ -64,7 +75,7 @@ function Profile() {
           <MenuItem>Settings</MenuItem>
           <MenuItem>Billing</MenuItem>
           <MenuDivider />
-          <MenuItem>Sign out</MenuItem>
+          <MenuItem onClick={()=>SignOut()}>Sign out</MenuItem>
         </MenuList>
       </Menu>
     </Flex>

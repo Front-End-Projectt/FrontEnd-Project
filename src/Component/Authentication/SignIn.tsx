@@ -58,27 +58,32 @@ export default function SimpleCard() {
       const [email, setEmail] = React.useState("")
     const [password, setPass] = React.useState("")
     const [Data, setData]= React.useState('')
+    const [isLogIn, setIsLogIn] = React.useState<any>(false)
 
     const api = "https://63e21e03109336b6cbffdd5b.mockapi.io/lap/signUp"
+
+    localStorage.setItem("isLogIn", isLogIn)
     const signIn = ()=>{
         axios.get(api).then(res=>{
         for(let i=0; i <= api.length; i++){
 
             const Email = res.data[i].email;
-
             const Password = res.data[i].password;
-            if(Email === email && Password === password){
-                <Link href='/SidNav'></Link>
+            const Id = res.data[i].id
+               if(Email === email && Password === password){
+
+                localStorage.setItem("isLogIn", "true")
+                // localStorage.setItem("id", Id)
                 navigate("/SideNav");
                 
-            console.log("goooooood")
-              break
-            }else{
+                 console.log("goooooood")
+                   break
+               }else{
 
                 console.log("no acount")
 
-            }}
-            setData(res.data)
+                }}
+                 setData(res.data)
     }
     )}
   return (
