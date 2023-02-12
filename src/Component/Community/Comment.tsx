@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { CheckIcon } from '@chakra-ui/icons';
 
-function Community() {
+function Comment() {
 const [comment, setComment] = React.useState("")
 const [data, setData] = React.useState<any[]>([])
 const [id, setId] = React.useState<string>('')
@@ -117,4 +117,4 @@ const [id, setId] = React.useState<string>('')
   )
 }
 
-export default Community
+export default Comment
