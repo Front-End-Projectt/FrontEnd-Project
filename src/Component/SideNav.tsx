@@ -64,7 +64,7 @@ export default function SideNav({
   function Greeting() {
     const isLoggedIn = localS;
 
-    if (isLoggedIn == false) {
+    if (isLoggedIn == "false") {
       return <Buttons />;
     }
     return <Profile />;

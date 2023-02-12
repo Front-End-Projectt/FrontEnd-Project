@@ -1,13 +1,14 @@
-import { Button, Flex, Link } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import React from "react";
 
 function Buttons() {
   return (
     <Flex>
-      <Link href="/SignIn">
+      <Link to="/SignIn">
         <Button>تسجيل الدخول</Button>{" "}
       </Link>
-      <Link href="/Register">
+      <Link to="/Register">
         <Button>حساب جديد</Button>
       </Link>
     </Flex>
