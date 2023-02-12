@@ -132,13 +132,10 @@ interface NavItemProps extends FlexProps {
   icon: IconType;
   children: ReactText;
 }
+// Nav item link
 const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
-  // console.log(children);
-  // console.log(children.toString());
   return (
-    <Link
-      to={"/" + children.toString()}
-      style={{ textDecoration: "none" }}>
+    <Link to={"/" + children.toString()} style={{ textDecoration: "none" }}>
       <Flex
         align="center"
         p="4"
