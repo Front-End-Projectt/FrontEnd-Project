@@ -1,4 +1,6 @@
+
 import React, { ReactNode } from "react";
+
 import {
   IconButton,
   Avatar,
@@ -31,12 +33,24 @@ import {
   FiMenu,
   FiBell,
   FiChevronDown,
-} from "react-icons/fi";
-import { IconType } from "react-icons";
-import { ReactText } from "react";
-import Buttons from "./Authentication/Buttons";
+
+} from 'react-icons/fi';
+import { IconType } from 'react-icons';
+import { ReactText } from 'react';
+import Buttons from './Authentication/Buttons';
+
+import Profile from './Authentication/Profile';
+import Diagnosis from './Diagnosis';
+import Register from './Authentication/Register';
+
+
+
+
+
+
 import { Route, Link } from "react-router-dom";
-import Profile from "./Authentication/Profile";
+
+
 
 interface LinkItemProps {
   name: string;
@@ -91,6 +105,10 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+
+ 
+
+
   return (
     <Box
       transition="3s ease"
@@ -107,8 +125,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+      {LinkItems.map((link, i) => (
+        <NavItem key={link.name} icon={link.icon} >
           {link.name}
         </NavItem>
       ))}

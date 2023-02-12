@@ -60,7 +60,7 @@ export default function SimpleCard() {
   const [userState, setUserState] = React.useState<string>("false");
   const api = "https://63e21e03109336b6cbffdd5b.mockapi.io/lap/signUp";
 
-  localStorage.setItem("isLogIn", userState);
+  // localStorage.setItem("isLogIn", userState);
   const signIn = () => {
     axios.get(api).then((usersList) => {
       for (let i = 0; i <= api.length; i++) {
@@ -71,7 +71,7 @@ export default function SimpleCard() {
 
         if (storedEmail === currentEmail && storedPassword === currentPass) {
           localStorage.setItem("isLogIn", "true");
-          // localStorage.setItem("id", Id)
+          localStorage.setItem("id", Id)
           navigate("/الرئيسية");
           console.log("Doing Good");
           break;
