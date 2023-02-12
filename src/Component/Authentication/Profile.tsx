@@ -34,9 +34,14 @@ function Profile() {
     localStorage.setItem("isLogIn", "false")
     localStorage.removeItem("id")
  }
+ const is = localStorage.getItem("isLogIn")
+ console.log(is)
  React.useEffect(()=> {
-   
- })
+  // const SignOut = () =>{
+    localStorage.setItem("isLogIn", "false")
+    localStorage.removeItem("id")
+//  }
+ },[is])
   return (
 
 

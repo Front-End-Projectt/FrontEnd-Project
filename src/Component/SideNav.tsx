@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { Children, ReactNode } from 'react';
 import {
   IconButton,
   Avatar,
@@ -38,6 +38,8 @@ import { ReactText } from 'react';
 import Buttons from './Authentication/Buttons';
 import { Route } from 'react-router-dom';
 import Profile from './Authentication/Profile';
+import Diagnosis from './Diagnosis';
+import Register from './Authentication/Register';
 
 
 interface LinkItemProps {
@@ -73,6 +75,9 @@ export default function SideNav({
     }
     return <Profile />;
   }
+
+
+
 
   
   // Greeting()
@@ -110,7 +115,9 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
-
+ function sendIndex(i:any){
+  localStorage.setItem("index", i)
+  }
 
   return (
     <Box
@@ -128,8 +135,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+      {LinkItems.map((link, i) => (
+        <NavItem key={link.name} icon={link.icon} onClick={()=>sendIndex(i)}>
           {link.name}
         </NavItem>
       ))}
