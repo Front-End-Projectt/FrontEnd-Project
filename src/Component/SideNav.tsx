@@ -37,6 +37,7 @@ import { IconType } from 'react-icons';
 import { ReactText } from 'react';
 import Buttons from './Authentication/Buttons';
 import { Route } from 'react-router-dom';
+import Profile from './Authentication/Profile';
 
 
 interface LinkItemProps {
@@ -44,14 +45,15 @@ interface LinkItemProps {
   icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'Home', icon: FiHome },
-  { name: 'Trending', icon: FiTrendingUp },
-  { name: 'Explore', icon: FiCompass },
-  { name: 'Favourites', icon: FiStar },
-  { name: 'Settings', icon: FiSettings },
+  { name: 'المستشفيات ', icon: FiHome },
+  { name: 'مراكز التدريب', icon: FiTrendingUp },
+  { name: 'معلمي الظل', icon: FiCompass },
+  { name: 'بطاقات الطلب', icon: FiStar },
+  { name: 'المجتمع', icon: FiSettings },
 ];
 
 export default function SideNav({
+
   
   children, comp
 }: {
@@ -59,9 +61,25 @@ export default function SideNav({
 }) {
   
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const localS = localStorage.isLogIn
+
+
+  function Greeting() {
+    const isLoggedIn = localS;
+    
+    if (isLoggedIn == false) {
+      return <Buttons />;
+    }
+    return <Profile />;
+  }
+
   
+  // Greeting()
   return (
+
     <Box  minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
+      
       <SidebarContent
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
@@ -80,7 +98,7 @@ export default function SideNav({
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
+      <Box mr={{ base: 0, md: 60 }} p="4">
         {children}
       </Box>
     </Box>
@@ -92,6 +110,8 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+
+
   return (
     <Box
       transition="3s ease"
@@ -104,7 +124,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+          Logo 
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
@@ -156,6 +176,18 @@ interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps,{comp}:{comp:ReactNode}) => {
+  // const localS = localStorage.isLogIn
+
+
+  function Greeting() {
+    const isLoggedIn = localStorage.isLogIn;
+    console.log(typeof(isLoggedIn))
+    if (isLoggedIn == "false" ) {
+      return <Buttons />;
+    }else{
+      return <Profile />;
+    }
+  }
   return (
     <Flex
       mr={{ base: 0, md: 60 }}
@@ -182,8 +214,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps,{comp}:{comp:ReactNode}) => 
         fontWeight="bold">
         Logo
       </Text>
-       <Buttons/>
-      {comp}
+
+      {Greeting()}
     </Flex>
   );
 };
