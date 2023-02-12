@@ -22,26 +22,17 @@ import {
     MenuList,
     Button,
   } from '@chakra-ui/react';
-import React, { useEffect } from 'react'
+import React from 'react'
 import { FiChevronDown } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom';
 
 function Profile() {
-  const [refresh, setRefresh] = React.useReducer(x => x + 1, 0)
   const navigate = useNavigate();
-
   const SignOut = () =>{
     localStorage.setItem("isLogIn", "false")
     localStorage.removeItem("id")
- }
- const is = localStorage.getItem("isLogIn")
- console.log(is)
- React.useEffect(()=> {
-  // const SignOut = () =>{
-    localStorage.setItem("isLogIn", "false")
-    localStorage.removeItem("id")
-//  }
- },[is])
+
+  }
   return (
 
 

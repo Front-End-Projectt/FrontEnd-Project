@@ -18,6 +18,9 @@ function App() {
       <Routes>
         <Route path="/" element={<SignIn />}></Route>
         <Route
+          path="/الرئيسية"
+          element={<SideNav comp={undefined} children={undefined} />}></Route>
+        <Route
           path="المستشفيات"
           element={
             <SideNav comp={<Hospitals />} children={<Hospitals />} />

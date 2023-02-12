@@ -75,14 +75,14 @@ export default function SideNav({
 
   const localS = localStorage.isLogIn;
 
-  function Greeting() {
-    const isLoggedIn = localS;
+  // function Greeting() {
+  //   const isLoggedIn = localS;
 
-    if (isLoggedIn == false) {
-      return <Buttons />;
-    }
-    return <Profile />;
-  }
+  //   if (isLoggedIn == "false") {
+  //     return <Buttons />;
+  //   }
+  //   return <Profile />;
+  // }
 
 
 
@@ -123,9 +123,7 @@ interface SidebarProps extends BoxProps {
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 
- function sendIndex(i:any){
-  localStorage.setItem("index", i)
-  }
+ 
 
 
   return (
@@ -145,7 +143,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link, i) => (
-        <NavItem key={link.name} icon={link.icon} onClick={()=>sendIndex(i)}>
+        <NavItem key={link.name} icon={link.icon} >
           {link.name}
         </NavItem>
       ))}
