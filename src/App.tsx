@@ -18,7 +18,7 @@ function App() {
         <Route path="/" element={<SignIn />}></Route>
         <Route
           path="SideNav"
-          element={<SideNav comp={<Buttons />} children={undefined} />}></Route>
+          element={<SideNav comp={<Buttons />} children={<Hospitals/>} />}></Route>
         <Route path="diagnosis" element={<Diagnosis />}></Route>
         <Route path="register" element={<Register />}></Route>
         <Route path="signIn" element={<SignIn />}></Route>
