@@ -59,18 +59,6 @@ export default function SideNav({
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const localS = localStorage.isLogIn;
-
-  function Greeting() {
-    const isLoggedIn = localS;
-
-    if (isLoggedIn == "false") {
-      return <Buttons />;
-    }
-    return <Profile />;
-  }
-
-  // Greeting()
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
       <SidebarContent
@@ -167,21 +155,18 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
 interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
+function Greeting() {
+  const isLoggedIn = localStorage.isLogIn;
+  if (isLoggedIn == "false") {
+    return <Buttons />;
+  } else {
+    return <Profile />;
+  }
+}
 const MobileNav = (
   { onOpen, ...rest }: MobileProps,
   { comp }: { comp: ReactNode }
 ) => {
-  // const localS = localStorage.isLogIn
-
-  function Greeting() {
-    const isLoggedIn = localStorage.isLogIn;
-    console.log(typeof isLoggedIn);
-    if (isLoggedIn == "false") {
-      return <Buttons />;
-    } else {
-      return <Profile />;
-    }
-  }
   return (
     <Flex
       mr={{ base: 0, md: 60 }}
