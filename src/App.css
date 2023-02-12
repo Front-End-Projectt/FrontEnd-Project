@@ -12,3 +12,9 @@
   justify-content: center;
   /* flex-direction: column; */
 }
+
+.Selcets {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

@@ -58,7 +58,7 @@ export default function SimpleCard() {
       const [email, setEmail] = React.useState("")
     const [password, setPass] = React.useState("")
     const [Data, setData]= React.useState('')
-    const [isLogIn, setIsLogIn] = React.useState<any>(false)
+    const [isLogIn, setIsLogIn] = React.useState<string>("false")
 
     const api = "https://63e21e03109336b6cbffdd5b.mockapi.io/lap/signUp"
 

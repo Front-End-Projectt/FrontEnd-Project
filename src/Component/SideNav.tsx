@@ -1,4 +1,6 @@
-import React, { Children, ReactNode } from 'react';
+
+import React, { ReactNode } from "react";
+
 import {
   IconButton,
   Avatar,
@@ -9,7 +11,6 @@ import {
   VStack,
   Icon,
   useColorModeValue,
-  Link,
   Drawer,
   DrawerContent,
   Text,
@@ -22,7 +23,7 @@ import {
   MenuItem,
   MenuList,
   Button,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 import {
   FiHome,
   FiTrendingUp,
@@ -32,14 +33,23 @@ import {
   FiMenu,
   FiBell,
   FiChevronDown,
+
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
 import Buttons from './Authentication/Buttons';
-import { Route } from 'react-router-dom';
+
 import Profile from './Authentication/Profile';
 import Diagnosis from './Diagnosis';
 import Register from './Authentication/Register';
+
+
+
+
+
+
+import { Route, Link } from "react-router-dom";
+
 
 
 interface LinkItemProps {
@@ -47,29 +57,27 @@ interface LinkItemProps {
   icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'المستشفيات ', icon: FiHome },
-  { name: 'مراكز التدريب', icon: FiTrendingUp },
-  { name: 'معلمي الظل', icon: FiCompass },
-  { name: 'بطاقات الطلب', icon: FiStar },
-  { name: 'المجتمع', icon: FiSettings },
+  { name: "المستشفيات ", icon: FiHome },
+  { name: "مراكز التدريب", icon: FiTrendingUp },
+  { name: "معلمي الظل", icon: FiCompass },
+  { name: "بطاقات الطلب", icon: FiStar },
+  { name: "المجتمع", icon: FiSettings },
 ];
 
 export default function SideNav({
-
-  
-  children, comp
+  children,
+  comp,
 }: {
-  children: ReactNode, comp: ReactNode
+  children: ReactNode;
+  comp: ReactNode;
 }) {
-  
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const localS = localStorage.isLogIn
-
+  const localS = localStorage.isLogIn;
 
   function Greeting() {
     const isLoggedIn = localS;
-    
+
     if (isLoggedIn == false) {
       return <Buttons />;
     }
@@ -79,15 +87,14 @@ export default function SideNav({
 
 
 
-  
+
+
   // Greeting()
   return (
-
-    <Box  minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
-      
+    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
       <SidebarContent
         onClose={() => onClose}
-        display={{ base: 'none', md: 'block' }}
+        display={{ base: "none", md: "block" }}
       />
       <Drawer
         autoFocus={false}
@@ -115,25 +122,27 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+
  function sendIndex(i:any){
   localStorage.setItem("index", i)
   }
 
+
   return (
     <Box
       transition="3s ease"
-      bg={useColorModeValue('white', 'gray.900')}
+      bg={useColorModeValue("white", "gray.900")}
       borderLeft="1px"
-      borderLeftColor={useColorModeValue('gray.200', 'gray.700')}
-      w={{ base: 'full', md: 60 }}
+      borderLeftColor={useColorModeValue("gray.200", "gray.700")}
+      w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo 
+          Logo
         </Text>
-        <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
+        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link, i) => (
         <NavItem key={link.name} icon={link.icon} onClick={()=>sendIndex(i)}>
@@ -148,9 +157,10 @@ interface NavItemProps extends FlexProps {
   icon: IconType;
   children: ReactText;
 }
+// Nav item link
 const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
   return (
-    <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+    <Link to={"/" + children.toString()} style={{ textDecoration: "none" }}>
       <Flex
         align="center"
         p="4"
@@ -159,8 +169,8 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
         role="group"
         cursor="pointer"
         _hover={{
-          bg: 'cyan.400',
-          color: 'white',
+          bg: "cyan.400",
+          color: "white",
         }}
         {...rest}>
         {icon && (
@@ -168,7 +178,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
             ml="4"
             fontSize="16"
             _groupHover={{
-              color: 'white',
+              color: "white",
             }}
             as={icon}
           />
@@ -182,16 +192,18 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
 interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
-const MobileNav = ({ onOpen, ...rest }: MobileProps,{comp}:{comp:ReactNode}) => {
+const MobileNav = (
+  { onOpen, ...rest }: MobileProps,
+  { comp }: { comp: ReactNode }
+) => {
   // const localS = localStorage.isLogIn
-
 
   function Greeting() {
     const isLoggedIn = localStorage.isLogIn;
-    console.log(typeof(isLoggedIn))
-    if (isLoggedIn == "false" ) {
+    console.log(typeof isLoggedIn);
+    if (isLoggedIn == "false") {
       return <Buttons />;
-    }else{
+    } else {
       return <Profile />;
     }
   }
@@ -201,13 +213,13 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps,{comp}:{comp:ReactNode}) => 
       px={{ base: 4, md: 4 }}
       height="20"
       alignItems="center"
-      bg={useColorModeValue('white', 'gray.900')}
+      bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-      justifyContent={{ base: 'space-between', md: 'flex-end' }}
+      borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+      justifyContent={{ base: "space-between", md: "flex-end" }}
       {...rest}>
       <IconButton
-        display={{ base: 'flex', md: 'none' }}
+        display={{ base: "flex", md: "none" }}
         onClick={onOpen}
         variant="outline"
         aria-label="open menu"
@@ -215,7 +227,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps,{comp}:{comp:ReactNode}) => 
       />
 
       <Text
-        display={{ base: 'flex', md: 'none' }}
+        display={{ base: "flex", md: "none" }}
         fontSize="2xl"
         fontFamily="monospace"
         fontWeight="bold">
