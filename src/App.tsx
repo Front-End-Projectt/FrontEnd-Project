@@ -8,6 +8,7 @@ import Diagnosis from './Component/Diagnosis'
 
 import PECS from './Component/PECS/PECS'
 import SideNav from './Component/SideNav'
+import Hospitals from './Component/Hospitals/Hospitals'
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
 
     <Routes>
       
-      <Route path='SideNav' element={<SideNav comp={<Buttons/>} children={undefined}/>}></Route>
+      <Route path='SideNav' element={<SideNav comp={<Buttons/>} children={<Hospitals/>}/>}></Route>
       <Route path='diagnosis' element={<Diagnosis/>}></Route>
       <Route path='register' element={<Register/>}></Route>
       <Route path='signIn' element={<SignIn/>}></Route>
