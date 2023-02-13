@@ -75,6 +75,7 @@ function Teacher() {
 <Select
         bg={'white'}
         pr={3}
+        _hover={{cursor: 'pointer'}}
         placeholder="المدينة"
         w={200}
         size={'md'}

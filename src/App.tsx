@@ -12,6 +12,7 @@ import SideNav from "./Component/SideNav";
 import Hospitals from "./Component/Hospitals/Hospitals";
 import Teacher from "./Component/Teachers/Teacher";
 import Cards from "./Component/PECS/Cards";
+import HospitalsDetails from "./Component/Hospitals/HospitalsDetails";
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
           path="/الرئيسية"
           element={<SideNav comp={undefined} children={undefined} />}></Route>
         <Route
-          path="المستشفيات"
+          path="المستشفيات/*"
           element={
             <SideNav comp={<Hospitals />} children={<Hospitals />} />
           }></Route>
@@ -46,6 +47,12 @@ function App() {
           path="معلمي الظل"
           element={
             <SideNav comp={<Teacher />} children={<Teacher />} />
+          }></Route>
+
+        <Route
+          path="المستشفيات/:id"
+          element={
+            <SideNav comp={<HospitalsDetails />} children={<HospitalsDetails />} />
           }></Route>
         
         <Route path="diagnosis" element={<Diagnosis />}></Route>
