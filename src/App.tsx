@@ -19,35 +19,14 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<SignIn />}></Route>
-        <Route
-          path="/الرئيسية"
-          element={<SideNav comp={undefined} children={undefined} />}></Route>
-        <Route
-          path="المستشفيات"
-          element={
-            <SideNav comp={<Hospitals />} children={<Hospitals />} />
-          }></Route>
-        <Route
-          path="المجتمع"
-          element={
-            <SideNav comp={<Comment />} children={<Comment />} />
-          }></Route>
-        <Route
-          path="بطاقات الطلب"
-          element={
-            <SideNav comp={<Buttons />} children={<PECS />} />
-          }></Route>
-                  <Route
-          path= "/Cards"
-          element={
-            <SideNav comp={<Buttons />} children={<Cards />} />
-          }></Route>
-        <Route
-          path="معلمي الظل"
-          element={
-            <SideNav comp={<Teacher />} children={<Teacher />} />
-          }></Route>
-        
+
+        <Route path="Hospitals" element={ <SideNav comp={undefined} children={<Hospitals />} />}></Route>
+        <Route path="Community" element={ <SideNav comp={undefined} children={<Comment />} /> }></Route>
+        <Route path="Teachers" element={ <SideNav comp={undefined} children={<Teacher />} /> }></Route>
+        <Route path="PECS" element={<SideNav comp={undefined} children={<PECS/>} />}>
+            <Route path="Categories" element={<Categories/>}/>
+            <Route path="Cards" element={<Cards/>}/>
+        </Route>
         <Route path="diagnosis" element={<Diagnosis />}></Route>
         <Route path="register" element={<Register />}></Route>
         <Route path="signIn" element={<SignIn />}></Route>
