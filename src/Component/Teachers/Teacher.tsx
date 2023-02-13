@@ -75,6 +75,7 @@ function Teacher() {
 <Select
         bg={'white'}
         pr={3}
+        _hover={{cursor: 'pointer'}}
         placeholder="المدينة"
         w={200}
         size={'md'}
@@ -148,7 +149,7 @@ function Teacher() {
             _focus={{
               bg: 'blue.500',
             }}>
-            Follow
+            المزيد
           </Button>
         </Stack>
       </Box>

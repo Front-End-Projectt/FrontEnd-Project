@@ -12,6 +12,7 @@ import SideNav from "./Component/SideNav";
 import Hospitals from "./Component/Hospitals/Hospitals";
 import Teacher from "./Component/Teachers/Teacher";
 import Cards from "./Component/PECS/Cards";
+import HospitalsDetails from "./Component/Hospitals/HospitalsDetails";
 
 
 function App() {
