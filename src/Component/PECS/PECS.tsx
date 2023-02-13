@@ -3,7 +3,7 @@ import React, { ReactNode, useState } from 'react'
 import { StarIcon, DeleteIcon } from '@chakra-ui/icons'
 import categories from './Categories'
 import Categories from './Categories'
-import { Route, Routes } from 'react-router-dom'
+import { Outlet, Route, Routes } from 'react-router-dom'
 import Cards from './Cards'
 import SideNav from '../SideNav'
 
@@ -44,11 +44,7 @@ function checkInfo() {
         </Flex>
         <SimpleGrid pt={10} columns={[2, 3, 4, 5]} spacing='40px'>
 
-          <Routes>
-            <Route path='' element={<Categories/>}/>
-            <Route path= "Cards" element={ <Cards setInfo={setInfo}/>}/>
-
-          </Routes>
+        <Outlet />
 
         </SimpleGrid>
     </>

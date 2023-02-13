@@ -47,8 +47,7 @@ function Cards({setInfo}:any) {
         
       console.log(cardData)
         setInfo(cardData[i])
-        
-        navigate("/")
+        navigate("/PECS/Categories")
     }
     return (
         <>
