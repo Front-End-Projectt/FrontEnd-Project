@@ -1,4 +1,6 @@
+
 import React, { ReactNode } from "react";
+
 import {
   IconButton,
   Avatar,
@@ -31,12 +33,24 @@ import {
   FiMenu,
   FiBell,
   FiChevronDown,
-} from "react-icons/fi";
-import { IconType } from "react-icons";
-import { ReactText } from "react";
-import Buttons from "./Authentication/Buttons";
+
+} from 'react-icons/fi';
+import { IconType } from 'react-icons';
+import { ReactText } from 'react';
+import Buttons from './Authentication/Buttons';
+
+import Profile from './Authentication/Profile';
+import Diagnosis from './Diagnosis';
+import Register from './Authentication/Register';
+
+
+
+
+
+
 import { Route, Link } from "react-router-dom";
-import Profile from "./Authentication/Profile";
+
+
 
 interface LinkItemProps {
   name: string;
@@ -59,18 +73,6 @@ export default function SideNav({
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const localS = localStorage.isLogIn;
-
-  function Greeting() {
-    const isLoggedIn = localS;
-
-    if (isLoggedIn == "false") {
-      return <Buttons />;
-    }
-    return <Profile />;
-  }
-
-  // Greeting()
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
       <SidebarContent
@@ -103,6 +105,10 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+
+ 
+
+
   return (
     <Box
       transition="3s ease"
@@ -119,8 +125,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+      {LinkItems.map((link, i) => (
+        <NavItem key={link.name} icon={link.icon} >
           {link.name}
         </NavItem>
       ))}
@@ -167,21 +173,18 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
 interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
+function Greeting() {
+  const isLoggedIn = localStorage.isLogIn;
+  if (isLoggedIn == "false") {
+    return <Buttons />;
+  } else {
+    return <Profile />;
+  }
+}
 const MobileNav = (
   { onOpen, ...rest }: MobileProps,
   { comp }: { comp: ReactNode }
 ) => {
-  // const localS = localStorage.isLogIn
-
-  function Greeting() {
-    const isLoggedIn = localStorage.isLogIn;
-    console.log(typeof isLoggedIn);
-    if (isLoggedIn == "false") {
-      return <Buttons />;
-    } else {
-      return <Profile />;
-    }
-  }
   return (
     <Flex
       mr={{ base: 0, md: 60 }}

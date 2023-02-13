@@ -91,7 +91,7 @@ function Hospitals() {
       <Box>
         <SimpleGrid columns={{base:1 , lg: 2 , xl:3 }} justifyContent={'center'} spacing={10} >
           {arr.map((value) => (
-            <Box
+            <Box key={value.title}
               display={'flex'}
               justifyContent={'space-between'}
               flexDirection={'column'}
