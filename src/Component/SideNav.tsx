@@ -17,12 +17,7 @@ import {
   useDisclosure,
   BoxProps,
   FlexProps,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  Button,
+
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -31,8 +26,7 @@ import {
   FiStar,
   FiSettings,
   FiMenu,
-  FiBell,
-  FiChevronDown,
+
 
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
@@ -40,31 +34,28 @@ import { ReactText } from 'react';
 import Buttons from './Authentication/Buttons';
 
 import Profile from './Authentication/Profile';
-import Diagnosis from './Diagnosis';
-import Register from './Authentication/Register';
 
 
 
 
 
 
-import { Route, Link } from "react-router-dom";
-import { ReactJSXElementAttributesProperty } from "@emotion/react/types/jsx-namespace";
-import { ValueTarget } from "framer-motion";
+
+import { Link } from "react-router-dom";
 
 
 
 interface LinkItemProps {
   name: string;
-  path:string;
   icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: "المستشفيات ", icon: FiHome, path:"Hospitals" },
-  { name: "مراكز التدريب", icon: FiTrendingUp, path:"Diagnosis"},
-  { name: "معلمي الظل", icon: FiCompass, path:"Teachers" },
-  { name:  "بطاقات الطلب", icon: FiStar, path:"PECS/Categories" },
-  { name: "المجتمع", icon: FiSettings, path:"Community" },
+  { name: "الرئيسية", icon: FiHome },
+  { name: "المستشفيات ", icon: FiHome },
+  { name: "مراكز التدريب", icon: FiTrendingUp },
+  { name: "معلمي الظل", icon: FiCompass },
+  { name: "بطاقات الطلب", icon: FiStar },
+  { name: "المجتمع", icon: FiSettings },
 ];
 
 export default function SideNav({
@@ -129,7 +120,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link, i) => (
-        <NavItem key={link.name} icon={link.icon} value={link.path}>
+        <NavItem key={link.name} icon={link.icon} >
           {link.name}
         </NavItem>
       ))}
@@ -140,14 +131,11 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 interface NavItemProps extends FlexProps {
   icon: IconType;
   children: ReactText;
-  value: ValueTarget;
-
 }
 // Nav item link
-const NavItem = ({ icon, children, value, ...rest }: NavItemProps) => {
-  
+const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
   return (
-    <Link to={`/${value}`} style={{ textDecoration: "none" }}>
+    <Link to={"/" + children.toString()} style={{ textDecoration: "none" }}>
       <Flex
         align="center"
         p="4"

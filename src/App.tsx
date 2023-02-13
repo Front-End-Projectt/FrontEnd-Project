@@ -28,6 +28,7 @@ function App() {
         <Route path="Hospitals" element={ <SideNav comp={undefined} children={<Hospitals />} />}></Route>
         <Route path="Community" element={ <SideNav comp={undefined} children={<Comment />} /> }></Route>
         <Route path="Teachers" element={ <SideNav comp={undefined} children={<Teacher />} /> }></Route>
+        <Route path="DetailsTeacher/:id" element={ <SideNav comp={undefined} children={<DetailsTeacher />} /> }></Route>
         <Route path="PECS" element={<SideNav comp={undefined} children={<PECS/>} />}>
             <Route path="Categories" element={<Categories/>}/>
             <Route path="Cards" element={<Cards/>}/>
