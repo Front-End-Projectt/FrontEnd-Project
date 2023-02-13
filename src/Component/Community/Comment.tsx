@@ -23,8 +23,9 @@ const [id, setId] = React.useState<string>('')
   
   // podt data to api
   const PostData = () =>{
-  
-
+    let loc = localStorage.getItem("isLogIn")
+     
+     if(loc == "true"){
       axios.post(api,{
         comment
 
@@ -33,6 +34,10 @@ const [id, setId] = React.useState<string>('')
         localStorage.setItem("id", res.data.id)
       })
       axios.get(api)
+     }else{
+      alert("pleas login")
+     }
+
 
   }
   // get data from api
@@ -111,7 +116,7 @@ const [id, setId] = React.useState<string>('')
 
   </Flex>
   {data.map((item:any)=>(
-      <p>{item.comment} <button onClick={()=>{deletItem(item.id)}}>delet</button></p>
+      <p key={item.id}>{item.comment} <button onClick={()=>{deletItem(item.id)}}>delet</button></p>
     ))}
   </>
   )

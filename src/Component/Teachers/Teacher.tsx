@@ -148,7 +148,7 @@ function Teacher() {
             _focus={{
               bg: 'blue.500',
             }}>
-            Follow
+            المزيد
           </Button>
         </Stack>
       </Box>

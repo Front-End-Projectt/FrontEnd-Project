@@ -54,10 +54,8 @@ function Profile() {
               alignItems="flex-start"
               spacing="1px"
               ml="2">
-              <Text fontSize="sm">Justina Clark</Text>
-              <Text fontSize="xs" color="gray.600">
-                Admin
-              </Text>
+              <Text fontSize="sm">احمد</Text>
+    
             </VStack>
             <Box display={{ base: 'none', md: 'flex' }}>
               <FiChevronDown />
@@ -69,7 +67,6 @@ function Profile() {
           borderColor={useColorModeValue('gray.200', 'gray.700')}>
           <MenuItem>Profile</MenuItem>
           <MenuItem>Settings</MenuItem>
-          <MenuItem>Billing</MenuItem>
           <MenuDivider />
           <MenuItem onClick={()=>SignOut()}>Sign out</MenuItem>
         </MenuList>
