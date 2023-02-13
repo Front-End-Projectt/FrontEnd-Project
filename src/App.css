@@ -18,3 +18,28 @@
   flex-direction: row;
   justify-content: space-around;
 }
+
+.frame {
+  border-radius: 10px;
+
+}
+
+/**** Star Rating ****/
+
+.button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+ 
+}
+.on {
+  color: #ffee02;
+  
+}
+.off {
+  color: #ccc;
+}
+.star{
+  font-size: 30px;
+}

@@ -11,49 +11,15 @@ import {
     Badge,
     useColorModeValue,
   } from '@chakra-ui/react';
-  import axios from 'axios';
+  import techArr from './ArrayTeacher';
 import { useNavigate,  Link, useParams, useLocation  } from 'react-router-dom';
+import StarRating from './StarRating';
 
 function Teacher({setInfo}:any) {
+  const navigate = useNavigate();
 
-  let techArr =[
-    {
-    "img":  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
-    "name": "احمد",
-    "des":"لدي الكفاءة في التعامل مع ألاطفال المصابين بالتوحد بأساليب مختلفة",
-    "region":"الرياض"
-    },
-    {
-    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s",
-    "name": "ساره",
-    "des":"لدي الكفاءة في التعامل مع الأطفال المصابين بالتوحد بأساليب مختلفة",
-    "region":"الجبيل"
-    },
-    {
-    "img":  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
-    "name": "سالم",
-    "des":"لدي الكفاءة في التعامل مع الأطفال المصابين بالتوحد بأساليب مختلفة",
-    "region":"الدمام"
-    },
-    {
-    "img":  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
-    "name": "فهد",
-    "des":"لدي الكفاءة في التعامل مع الأطفال المصابين بالتوحد بأساليب مختلفة",
-    "region":"القصيم"
-    },
-    {
-    "img":  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
-    "name": "خالد",
-    "des":"لدي الكفاءة في التعامل مع ألاطفال المصابين بالتوحد بأساليب مختلفة",
-    "region":"الرياض"
-    },
-    {
-    "img":  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
-    "name": "نوره",
-    "des":"لدي الكفاءة في التعامل مع ألاطفال المصابين بالتوحد بأساليب مختلفة",
-    "region":"المجمعة"
-    }
-    ]
+
+ 
     const [arr, setArr] = React.useState(techArr);
     const filter = (region: string) => {
         if (region === 'الرياض') {
@@ -78,6 +44,7 @@ function Teacher({setInfo}:any) {
 <Select
         bg={'white'}
         pr={3}
+        _hover={{cursor: 'pointer'}}
         placeholder="المدينة"
         w={200}
         size={'md'}
@@ -133,11 +100,13 @@ function Teacher({setInfo}:any) {
             fontWeight={'400'}>
             #{tech.region}
           </Badge>
-        </Stack>
+    
 
+        </Stack>
+        <StarRating/>
         <Stack mt={8} direction={'row'} spacing={4}>
           <Button 
-          
+           onClick={() => navigate(`/detailsTeacher/${tech.id}`)}
             flex={1}
             fontSize={'sm'}
             rounded={'full'}
