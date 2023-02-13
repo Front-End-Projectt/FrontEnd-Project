@@ -1,4 +1,3 @@
-
 import React, { ReactNode } from "react";
 
 import {
@@ -25,57 +24,43 @@ import {
   Button,
 } from "@chakra-ui/react";
 import {
-
   FiTrendingUp,
   FiCompass,
   FiStar,
   FiSettings,
- 
   FiBell,
   FiChevronDown,
+} from "react-icons/fi";
 
-} from 'react-icons/fi';
+import Diagnosis from "./Diagnosis";
+import Register from "./Authentication/Register";
 
-
-import Diagnosis from './Diagnosis';
-import Register from './Authentication/Register';
-
-
-import {
-  FiHome,
-  FiMenu,
-  FiUsers
-} from 'react-icons/fi';
-import { IconType } from 'react-icons';
-import { ReactText } from 'react';
-import Buttons from './Authentication/Buttons';
-import Profile from './Authentication/Profile';
+import { FiHome, FiMenu, FiUsers } from "react-icons/fi";
+import { IconType } from "react-icons";
+import { ReactText } from "react";
+import Buttons from "./Authentication/Buttons";
+import Profile from "./Authentication/Profile";
 
 import { BiBuildingHouse } from "react-icons/bi";
-  import { CiHospital1, CiGlobe, } from "react-icons/ci";
-  import { BsCardText } from "react-icons/bs";
-
-
+import { CiHospital1, CiGlobe } from "react-icons/ci";
+import { BsCardText } from "react-icons/bs";
 
 import { Route, Link } from "react-router-dom";
 import { ReactJSXElementAttributesProperty } from "@emotion/react/types/jsx-namespace";
 import { ValueTarget } from "framer-motion";
 
-
-
 interface LinkItemProps {
   name: string;
-  path:string;
+  path: string;
   icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
-
-  { name: "الرئيسية ", icon: FiHome  , path:"HOme" },
-  { name: "المستشفيات ", icon: CiHospital1 , path:"Hospitals" },
-  { name: "مراكز التدريب", icon: BiBuildingHouse , path:"Diagnosis"},
-  { name: "معلمي الظل", icon: FiUsers , path:"Teachers" },
-  { name:  "بطاقات الطلب", icon: BsCardText , path:"PECS/Categories" },
-  { name: "المجتمع", icon: CiGlobe , path:"Community" },
+  { name: "الرئيسية ", icon: FiHome, path: "HOme" },
+  { name: "المستشفيات ", icon: CiHospital1, path: "Hospitals" },
+  { name: "مراكز التدريب", icon: BiBuildingHouse, path: "Diagnosis" },
+  { name: "معلمي الظل", icon: FiUsers, path: "Teachers" },
+  { name: "بطاقات الطلب", icon: BsCardText, path: "PECS/Categories" },
+  { name: "المجتمع", icon: CiGlobe, path: "Community" },
 ];
 
 export default function SideNav({
@@ -119,10 +104,6 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
-
- 
-
-
   return (
     <Box
       transition="3s ease"
@@ -140,7 +121,16 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link, i) => (
-        <NavItem key={link.name} icon={link.icon} value={link.path}>
+        <NavItem
+          _hover={{
+            backgroundColor: "rgba(0, 135, 85, 0.7)",
+            color: "#ffffff",
+            transition: "150ms",
+          }}
+          fontFamily="GE SS Unique Bold"
+          key={link.name}
+          icon={link.icon}
+          value={link.path}>
           {link.name}
         </NavItem>
       ))}
@@ -152,11 +142,9 @@ interface NavItemProps extends FlexProps {
   icon: IconType;
   children: ReactText;
   value: ValueTarget;
-
 }
 // Nav item link
 const NavItem = ({ icon, children, value, ...rest }: NavItemProps) => {
-  
   return (
     <Link to={`/${value}`} style={{ textDecoration: "none" }}>
       <Flex

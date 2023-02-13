@@ -13,11 +13,9 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import HospitalsDetails from "./HospitalsDetails";
-import hospArr from './array.js'
+import hospArr from "./array.js";
 
 function Hospitals() {
-
   const navigate = useNavigate();
 
   const [arr, setArr] = useState(hospArr);
@@ -49,12 +47,11 @@ function Hospitals() {
         bg={"white"}
         pr={3}
         _hover={{ cursor: "pointer" }}
-        placeholder="المدينة"
+        placeholder={`المدينة`}
         w={200}
         size={"md"}
         m={5}
-        onChange={(e) => filter(e.target.value)}
-      >
+        onChange={(e) => filter(e.target.value)}>
         <option value="الرياض">الرياض</option>
         <option value="الاحساء">الاحساء</option>
         <option value="حائل">حائل</option>
@@ -63,8 +60,7 @@ function Hospitals() {
         <SimpleGrid
           columns={{ base: 1, lg: 2, xl: 3 }}
           justifyContent={"center"}
-          spacing={10}
-        >
+          spacing={10}>
           {arr.map((value) => (
             <Box
               key={value.title}
@@ -74,11 +70,10 @@ function Hospitals() {
               maxW={"445px"}
               w={"full"}
               bg={useColorModeValue("white", "gray.900")}
-              boxShadow={"2xl"}
+              boxShadow={"md"}
               rounded={"md"}
               p={6}
-              overflow={"hidden"}
-            >
+              overflow={"hidden"}>
               <Heading mb={5}>{value.title}</Heading>
               <Stack>
                 <Text color={"gray.500"}>{value.description}</Text>
@@ -86,19 +81,25 @@ function Hospitals() {
               <Flex
                 flexDirection={"row"}
                 justifyContent={"space-between"}
-                alignItems={"flex-end"}
-              >
-                <Button mt={5} onClick={() => navigate(`/المستشفيات/${value.id}`)}>
-                  أعرف المزيد
-                </Button>
+                alignItems={"flex-end"}>
                 <Badge
                   px={2}
                   py={1}
                   bg={useColorModeValue("gray.50", "gray.800")}
-                  fontWeight={"400"}
-                >
+                  fontWeight={"400"}>
                   #{value.city}
                 </Badge>
+                <Button
+                  _hover={{
+                    backgroundColor: "rgba(0, 135, 85, 0.7)",
+                    color: "#ffffff",
+                    transition: "150ms",
+                  }}
+                  variant="outline"
+                  mt={5}
+                  onClick={() => navigate(`/المستشفيات/${value.id}`)}>
+                  عرض المزيد
+                </Button>
               </Flex>
             </Box>
           ))}

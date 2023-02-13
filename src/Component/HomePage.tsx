@@ -1,11 +1,8 @@
-import React from 'react'
+import { Heading } from "@chakra-ui/react";
+import React from "react";
 
 function HomePage() {
-  return (
-    <div>
-      homePage
-    </div>
-  )
+  return <Heading>الرئيسية</Heading>;
 }
 
-export default HomePage
+export default HomePage;
