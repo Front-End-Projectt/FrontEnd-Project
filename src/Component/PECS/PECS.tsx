@@ -5,9 +5,11 @@ import categories from './Categories'
 import Categories from './Categories'
 import { Route, Routes } from 'react-router-dom'
 import Cards from './Cards'
+import SideNav from '../SideNav'
 
 function PECS( ) {
   const [info, setInfo] = useState<any>({})
+  // const [cards, setCards] = useState<any>()
 console.log();
 
 function checkInfo() {
@@ -43,8 +45,9 @@ function checkInfo() {
         <SimpleGrid pt={10} columns={[2, 3, 4, 5]} spacing='40px'>
 
           <Routes>
-            <Route path='/Categories' element={<Categories/>}/>
-            <Route path='/Cards' element={<Cards setInfo={setInfo}/>}/>
+            <Route path='' element={<Categories/>}/>
+            <Route path= "Cards" element={ <Cards setInfo={setInfo}/>}/>
+
           </Routes>
 
         </SimpleGrid>

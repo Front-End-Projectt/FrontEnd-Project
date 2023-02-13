@@ -46,7 +46,7 @@ function Cards({setInfo}:any) {
     const addCard = (i:number)=>{
         
         setInfo(cardData[i])
-        navigate("/Categories")
+        navigate("/")
     }
     return (
         <>

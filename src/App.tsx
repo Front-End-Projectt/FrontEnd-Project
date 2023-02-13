@@ -9,6 +9,7 @@ import Categories from "./Component/PECS/Categories";
 import PECS from "./Component/PECS/PECS";
 import SideNav from "./Component/SideNav";
 import Hospitals from "./Component/Hospitals/Hospitals";
+import Cards from "./Component/PECS/Cards";
 
 function App() {
   return (
@@ -31,11 +32,17 @@ function App() {
         <Route
           path="بطاقات الطلب"
           element={
-            <SideNav comp={<Buttons />} children={<Categories />} />
+            <SideNav comp={<Buttons />} children={<PECS />} />
+          }></Route>
+                  <Route
+          path= "/Cards"
+          element={
+            <SideNav comp={<Buttons />} children={<Cards />} />
           }></Route>
         <Route path="diagnosis" element={<Diagnosis />}></Route>
         <Route path="register" element={<Register />}></Route>
         <Route path="signIn" element={<SignIn />}></Route>
+
       </Routes>
     </>
   );
