@@ -8,13 +8,14 @@ import {
     Text,
     Stack,
     Button,
-    Link,
     Badge,
     useColorModeValue,
   } from '@chakra-ui/react';
   import axios from 'axios';
+import { useNavigate,  Link, useParams, useLocation  } from 'react-router-dom';
 
-function Teacher() {
+function Teacher({setInfo}:any) {
+
   let techArr =[
     {
     "img":  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
@@ -69,8 +70,10 @@ function Teacher() {
           setArr(techArr);
         }
       };
+
   return (
 <>
+
 <Text>معلم التوحد هو مشغل مهنة اجتماعية يراقب الطلاب الذين يعانون من اضطراب التوحد. يقوم هذا المتخصص بوضع خطط وتطبيقات لتوفير الاجتماعات والتدريب في الذهن والتواصل للطلاب الذين يعانون من اضطراب التوحد. يقوم معلمو التوحد أيضًا بتوفير دعم للطلاب الذين يواجهون أي مشاكل في مجال التصرف، وبتوفير دعم من خلال التدريب الذكي وإعدادهم لمختلف الحياة.</Text>
 <Select
         bg={'white'}
@@ -87,11 +90,11 @@ function Teacher() {
         <option value="الدمام">الدمام</option>
         <option value="الجبيل">الجبيل</option>
       </Select>
-<SimpleGrid columns={{base:1,md:3,sm:2}}  spacing={10}>
+<SimpleGrid  columns={{base:1,md:3,sm:2}}  spacing={10} >
   { arr.map((tech, i)=>(
 
-<Center py={6} key={i}>
-      <Box
+<Center  py={6} key={i} >
+      <Box 
         maxW={'320px'}
         w={'full'}
         bg={useColorModeValue('white', 'gray.900')}
@@ -133,7 +136,8 @@ function Teacher() {
         </Stack>
 
         <Stack mt={8} direction={'row'} spacing={4}>
-          <Button
+          <Button 
+          
             flex={1}
             fontSize={'sm'}
             rounded={'full'}

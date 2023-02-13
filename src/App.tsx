@@ -12,7 +12,7 @@ import SideNav from "./Component/SideNav";
 import Hospitals from "./Component/Hospitals/Hospitals";
 import Teacher from "./Component/Teachers/Teacher";
 import Cards from "./Component/PECS/Cards";
-
+import DetailsTeacher from "./Component/Teachers/DetailsTeacher";
 
 function App() {
   return (
@@ -47,7 +47,13 @@ function App() {
           element={
             <SideNav comp={<Teacher />} children={<Teacher />} />
           }></Route>
+        <Route
+          path="/DetailsTeachers"
+          element={
+            <SideNav comp={<Teacher />} children={<DetailsTeacher />} />
+          }></Route>
         
+        {/* <Route path="details" element={<DetailsTeacher />}></Route> */}
         <Route path="diagnosis" element={<Diagnosis />}></Route>
         <Route path="register" element={<Register />}></Route>
         <Route path="signIn" element={<SignIn />}></Route>
