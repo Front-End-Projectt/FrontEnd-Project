@@ -26,7 +26,7 @@ import {
   FiStar,
   FiSettings,
   FiMenu,
-
+  FiUsers
 
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
@@ -42,20 +42,22 @@ import Profile from './Authentication/Profile';
 
 
 import { Link } from "react-router-dom";
-
-
-
+import { 
+  BiBuildings, BiBuildingHouse } from "react-icons/bi";
+  import { BiWorld } from "react-icons/bi";
+  import { CiHospital1, CiGlobe, } from "react-icons/ci";
+  import { BsCardText } from "react-icons/bs";
 interface LinkItemProps {
   name: string;
   icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
   { name: "الرئيسية", icon: FiHome },
-  { name: "المستشفيات ", icon: FiHome },
-  { name: "مراكز التدريب", icon: FiTrendingUp },
-  { name: "معلمي الظل", icon: FiCompass },
-  { name: "بطاقات الطلب", icon: FiStar },
-  { name: "المجتمع", icon: FiSettings },
+  { name: "المستشفيات ", icon: CiHospital1 },
+  { name: "مراكز التدريب", icon: BiBuildingHouse },
+  { name: "معلمي الظل", icon: FiUsers },
+  { name: "بطاقات الطلب", icon: BsCardText },
+  { name: "المجتمع", icon: CiGlobe },
 ];
 
 export default function SideNav({
