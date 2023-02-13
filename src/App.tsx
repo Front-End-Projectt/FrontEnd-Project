@@ -11,6 +11,8 @@ import PECS from "./Component/PECS/PECS";
 import SideNav from "./Component/SideNav";
 import Hospitals from "./Component/Hospitals/Hospitals";
 import Teacher from "./Component/Teachers/Teacher";
+import Cards from "./Component/PECS/Cards";
+
 
 function App() {
   return (
@@ -33,7 +35,12 @@ function App() {
         <Route
           path="بطاقات الطلب"
           element={
-            <SideNav comp={<Buttons />} children={<Categories />} />
+            <SideNav comp={<Buttons />} children={<PECS />} />
+          }></Route>
+                  <Route
+          path= "/Cards"
+          element={
+            <SideNav comp={<Buttons />} children={<Cards />} />
           }></Route>
         <Route
           path="معلمي الظل"
@@ -44,6 +51,7 @@ function App() {
         <Route path="diagnosis" element={<Diagnosis />}></Route>
         <Route path="register" element={<Register />}></Route>
         <Route path="signIn" element={<SignIn />}></Route>
+
       </Routes>
 
     </>

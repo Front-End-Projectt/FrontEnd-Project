@@ -18,6 +18,8 @@ import {
     ButtonGroup,
     Divider,
   } from '@chakra-ui/react';
+import axios from 'axios';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
   type Categ = {
@@ -36,21 +38,28 @@ const cardData = [
 ];
 
 
-function Cards() {
-
+function Cards({setInfo}:any) {
     const navigate = useNavigate();
+    // const [img , setImg] = useState("")
+    // const [title , setTitle] = useState("")
+
+    const addCard = (i:number)=>{
+        
+        setInfo(cardData[i])
+        navigate("/")
+    }
     return (
         <>
-            {cardData.map((e) => 
-    <Card key={e.title}  maxW='sm' textAlign={"center"} borderRadius={30}  cursor={"pointer"} onClick={()=>navigate("/Categories")}>
-        <CardBody>
-            <Image
-            src= {e.img}
-            alt={`${e.title}`}
-            />
-               <Heading mt='6' size='md'>{e.title}</Heading>
-        </CardBody>
-    </Card>
+            {cardData.map((e,i) => 
+            <Card key={e.title}  maxW='sm' textAlign={"center"} borderRadius={30}  cursor={"pointer"} onClick={()=>addCard(i)}>
+                <CardBody>
+                    <Image
+                    src= {e.img}
+                    alt={`${e.title}`}
+                    />
+                    <Heading mt='6' size='md'>{e.title}</Heading>
+                </CardBody>
+            </Card>
     )}
         </>
     );
