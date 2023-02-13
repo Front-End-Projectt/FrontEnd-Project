@@ -12,7 +12,7 @@ import SideNav from "./Component/SideNav";
 import Hospitals from "./Component/Hospitals/Hospitals";
 import Teacher from "./Component/Teachers/Teacher";
 import Cards from "./Component/PECS/Cards";
-
+import HomePage from "./Component/HomePage";
 import DetailsTeacher from "./Component/Teachers/DetailsTeacher";
 
 import HospitalsDetails from "./Component/Hospitals/HospitalsDetails";
@@ -25,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SignIn />}></Route>
 
+        <Route path="Home" element={ <SideNav comp={undefined} children={<HomePage />} />}></Route>
         <Route path="Hospitals" element={ <SideNav comp={undefined} children={<Hospitals />} />}></Route>
         <Route path="Community" element={ <SideNav comp={undefined} children={<Comment />} /> }></Route>
         <Route path="Teachers" element={ <SideNav comp={undefined} children={<Teacher />} /> }></Route>

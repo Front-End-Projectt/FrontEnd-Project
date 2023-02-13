@@ -17,47 +17,65 @@ import {
   useDisclosure,
   BoxProps,
   FlexProps,
-
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  Button,
 } from "@chakra-ui/react";
 import {
-  FiHome,
+
   FiTrendingUp,
   FiCompass,
   FiStar,
   FiSettings,
+ 
+  FiBell,
+  FiChevronDown,
+
+} from 'react-icons/fi';
+
+
+import Diagnosis from './Diagnosis';
+import Register from './Authentication/Register';
+
+
+import {
+  FiHome,
   FiMenu,
   FiUsers
-
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
 import Buttons from './Authentication/Buttons';
-
 import Profile from './Authentication/Profile';
 
-
-
-
-
-
-
-import { Link } from "react-router-dom";
-import { 
-  BiBuildings, BiBuildingHouse } from "react-icons/bi";
-  import { BiWorld } from "react-icons/bi";
+import { BiBuildingHouse } from "react-icons/bi";
   import { CiHospital1, CiGlobe, } from "react-icons/ci";
   import { BsCardText } from "react-icons/bs";
+
+
+
+import { Route, Link } from "react-router-dom";
+import { ReactJSXElementAttributesProperty } from "@emotion/react/types/jsx-namespace";
+import { ValueTarget } from "framer-motion";
+
+
+
 interface LinkItemProps {
   name: string;
+  path:string;
   icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: "الرئيسية", icon: FiHome },
-  { name: "المستشفيات ", icon: CiHospital1 },
-  { name: "مراكز التدريب", icon: BiBuildingHouse },
-  { name: "معلمي الظل", icon: FiUsers },
-  { name: "بطاقات الطلب", icon: BsCardText },
-  { name: "المجتمع", icon: CiGlobe },
+
+  { name: "الرئيسية ", icon: FiHome  , path:"HOme" },
+  { name: "المستشفيات ", icon: CiHospital1 , path:"Hospitals" },
+  { name: "مراكز التدريب", icon: BiBuildingHouse , path:"Diagnosis"},
+  { name: "معلمي الظل", icon: FiUsers , path:"Teachers" },
+  { name:  "بطاقات الطلب", icon: BsCardText , path:"PECS/Categories" },
+  { name: "المجتمع", icon: CiGlobe , path:"Community" },
 ];
 
 export default function SideNav({
@@ -122,7 +140,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link, i) => (
-        <NavItem key={link.name} icon={link.icon} >
+        <NavItem key={link.name} icon={link.icon} value={link.path}>
           {link.name}
         </NavItem>
       ))}
@@ -133,11 +151,14 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 interface NavItemProps extends FlexProps {
   icon: IconType;
   children: ReactText;
+  value: ValueTarget;
+
 }
 // Nav item link
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
+const NavItem = ({ icon, children, value, ...rest }: NavItemProps) => {
+  
   return (
-    <Link to={"/" + children.toString()} style={{ textDecoration: "none" }}>
+    <Link to={`/${value}`} style={{ textDecoration: "none" }}>
       <Flex
         align="center"
         p="4"
