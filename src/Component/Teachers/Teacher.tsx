@@ -8,51 +8,18 @@ import {
     Text,
     Stack,
     Button,
-    Link,
     Badge,
     useColorModeValue,
   } from '@chakra-ui/react';
-  import axios from 'axios';
+  import techArr from './ArrayTeacher';
+import { useNavigate,  Link, useParams, useLocation  } from 'react-router-dom';
+import StarRating from './StarRating';
 
-function Teacher() {
-  let techArr =[
-    {
-    "img":  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
-    "name": "احمد",
-    "des":"لدي الكفاءة في التعامل مع ألاطفال المصابين بالتوحد بأساليب مختلفة",
-    "region":"الرياض"
-    },
-    {
-    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s",
-    "name": "ساره",
-    "des":"لدي الكفاءة في التعامل مع الأطفال المصابين بالتوحد بأساليب مختلفة",
-    "region":"الجبيل"
-    },
-    {
-    "img":  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
-    "name": "سالم",
-    "des":"لدي الكفاءة في التعامل مع الأطفال المصابين بالتوحد بأساليب مختلفة",
-    "region":"الدمام"
-    },
-    {
-    "img":  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
-    "name": "فهد",
-    "des":"لدي الكفاءة في التعامل مع الأطفال المصابين بالتوحد بأساليب مختلفة",
-    "region":"القصيم"
-    },
-    {
-    "img":  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
-    "name": "خالد",
-    "des":"لدي الكفاءة في التعامل مع ألاطفال المصابين بالتوحد بأساليب مختلفة",
-    "region":"الرياض"
-    },
-    {
-    "img":  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
-    "name": "نوره",
-    "des":"لدي الكفاءة في التعامل مع ألاطفال المصابين بالتوحد بأساليب مختلفة",
-    "region":"المجمعة"
-    }
-    ]
+function Teacher({setInfo}:any) {
+  const navigate = useNavigate();
+
+
+ 
     const [arr, setArr] = React.useState(techArr);
     const filter = (region: string) => {
         if (region === 'الرياض') {
@@ -69,12 +36,15 @@ function Teacher() {
           setArr(techArr);
         }
       };
+
   return (
 <>
+
 <Text>معلم التوحد هو مشغل مهنة اجتماعية يراقب الطلاب الذين يعانون من اضطراب التوحد. يقوم هذا المتخصص بوضع خطط وتطبيقات لتوفير الاجتماعات والتدريب في الذهن والتواصل للطلاب الذين يعانون من اضطراب التوحد. يقوم معلمو التوحد أيضًا بتوفير دعم للطلاب الذين يواجهون أي مشاكل في مجال التصرف، وبتوفير دعم من خلال التدريب الذكي وإعدادهم لمختلف الحياة.</Text>
 <Select
         bg={'white'}
         pr={3}
+        _hover={{cursor: 'pointer'}}
         placeholder="المدينة"
         w={200}
         size={'md'}
@@ -87,11 +57,11 @@ function Teacher() {
         <option value="الدمام">الدمام</option>
         <option value="الجبيل">الجبيل</option>
       </Select>
-<SimpleGrid columns={{base:1,md:3,sm:2}}  spacing={10}>
+<SimpleGrid  columns={{base:1,md:3,sm:2}}  spacing={10} >
   { arr.map((tech, i)=>(
 
-<Center py={6} key={i}>
-      <Box
+<Center  py={6} key={i} >
+      <Box 
         maxW={'320px'}
         w={'full'}
         bg={useColorModeValue('white', 'gray.900')}
@@ -130,10 +100,13 @@ function Teacher() {
             fontWeight={'400'}>
             #{tech.region}
           </Badge>
-        </Stack>
+    
 
+        </Stack>
+        <StarRating/>
         <Stack mt={8} direction={'row'} spacing={4}>
-          <Button
+          <Button 
+           onClick={() => navigate(`/detailsTeacher/${tech.id}`)}
             flex={1}
             fontSize={'sm'}
             rounded={'full'}

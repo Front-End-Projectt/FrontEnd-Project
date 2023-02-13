@@ -11,6 +11,9 @@ import SideNav from "./Component/SideNav";
 import Hospitals from "./Component/Hospitals/Hospitals";
 import Teacher from "./Component/Teachers/Teacher";
 import Cards from "./Component/PECS/Cards";
+import HomePage from "./Component/HomePage";
+import DetailsTeacher from "./Component/Teachers/DetailsTeacher";
+import HospitalsDetails from "./Component/Hospitals/HospitalsDetails";
 import CommunityPage from "./Component/Community/CommunityPage";
 
 function App() {
@@ -18,31 +21,36 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<SignIn />}></Route>
+
         <Route
-          path="/الرئيسية"
-          element={<SideNav comp={undefined} children={undefined} />}></Route>
-        <Route
-          path="المستشفيات"
+          path="Home"
           element={
-            <SideNav comp={<Hospitals />} children={<Hospitals />} />
+            <SideNav comp={undefined} children={<HomePage />} />
           }></Route>
         <Route
-          path="المجتمع"
+          path="Hospitals"
+          element={
+            <SideNav comp={undefined} children={<Hospitals />} />
+          }></Route>
+        <Route
+          path="Community"
           element={
             <SideNav comp={undefined} children={<CommunityPage />} />
           }></Route>
         <Route
-          path="بطاقات الطلب"
-          element={<SideNav comp={<Buttons />} children={<PECS />} />}></Route>
+          path="Teachers"
+          element={<SideNav comp={undefined} children={<Teacher />} />}></Route>
         <Route
-          path="/Cards"
-          element={<SideNav comp={<Buttons />} children={<Cards />} />}></Route>
-        <Route
-          path="معلمي الظل"
+          path="DetailsTeacher/:id"
           element={
-            <SideNav comp={<Teacher />} children={<Teacher />} />
+            <SideNav comp={undefined} children={<DetailsTeacher />} />
           }></Route>
-
+        <Route
+          path="PECS"
+          element={<SideNav comp={undefined} children={<PECS />} />}>
+          <Route path="Categories" element={<Categories />} />
+          <Route path="Cards" element={<Cards />} />
+        </Route>
         <Route path="diagnosis" element={<Diagnosis />}></Route>
         <Route path="register" element={<Register />}></Route>
         <Route path="signIn" element={<SignIn />}></Route>

@@ -40,8 +40,7 @@ function Categories() {
   return (
       <>
           {PECSs.map((e) => 
-  <Card key={e.title}  maxW='sm' textAlign={"center"} borderRadius={30}  cursor={"pointer"} onClick={()=>navigate("/Cards")}>
-    {/* onClick={navigate("/Categories")} */}
+  <Card key={e.title}  maxW='sm' textAlign={"center"} borderRadius={30}  cursor={"pointer"} onClick={()=>navigate("/PECS/Cards")}>
       <CardBody>
           <Image
           src= {e.img}
