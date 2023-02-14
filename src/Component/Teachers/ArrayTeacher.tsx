@@ -12,7 +12,7 @@ export default techArr =[
     },
     {
         id:2,
-    img: "https://cdn-icons-png.flaticon.com/512/4140/4140065.png",
+    img: "https://cdn-icons-png.flaticon.com/512/4323/4323004.png",
     name: "ساره",
     des:"لدي الكفاءة في التعامل مع الأطفال المصابين بالتوحد بأساليب مختلفة",
     email: "sarah@buehner.com",
@@ -44,7 +44,7 @@ export default techArr =[
     },
     {
         id:6,
-    img:  'https://cdn-icons-png.flaticon.com/512/4140/4140065.png',
+    img:  'https://cdn-icons-png.flaticon.com/512/4323/4323004.png',
     name: "نوره",
     des:"لدي الكفاءة في التعامل مع ألاطفال المصابين بالتوحد بأساليب مختلفة",
     email: "nora@buehner.com",

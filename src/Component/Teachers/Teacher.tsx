@@ -38,7 +38,7 @@ function Teacher({ setInfo }: any) {
   return (
     <>
     <Box m={5}>
-      <Flex flexDir={"column"} gap={4} p={7} bg={"white"} >
+      <Flex flexDir={"column"} gap={7} p={7} bg={"white"} borderRadius={10}>
       <Heading as="h2">
         معلمي الظل
       </Heading>
