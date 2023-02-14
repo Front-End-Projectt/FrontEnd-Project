@@ -35,6 +35,7 @@ function Hospitals() {
 
   return (
     <Box m={5}>
+      <Box bg={'white'} p={7} borderRadius={10}>
       <Heading mb={2}>المستشفيات</Heading>
       <Text fontSize={'lg'}>
         المستشفى هو وسيلة للرعاية الصحية الذاتية التي توفر خدمات الرعاية الصحية
@@ -45,6 +46,7 @@ function Hospitals() {
         الصحي، وتكوين الشخص ونمو القدرات، والبحث عن الأمراض المزمنة وعلاجها، و
         غيرها من الخدمات.
       </Text>
+      </Box>
       <Select
         bg={'white'}
         pr={3}
