@@ -16,42 +16,6 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-// function SignIn() {
-//     const [email, setEmail] = React.useState("")
-//     const [password, setPass] = React.useState("")
-//     const [Data, setData]= React.useState('')
-
-//     const api = "https://63e21e03109336b6cbffdd5b.mockapi.io/lap/signUp"
-//     const signIn = ()=>{
-//         axios.get(api).then(res=>{
-//         for(let i=0; i <= api.length; i++){
-
-//             const Email = res.data[i].email;
-
-//             const Password = res.data[i].password;
-//             if(Email === email && Password === password){
-//                 // <Link to='./SideNav'></Link>
-//             console.log("goooooood")
-//               break
-//             }else{
-
-//                 console.log("no acount")
-
-//             }}
-//             // setData(res.data)
-//     }
-//     )}
-//   return (
-//     <div>
-//       <input className='input-register' type="email" value={email}  onChange={(e)=> setEmail(e.target.value)} />
-//       <input className='input-register' type="password" value={password}  onChange={(e)=> setPass(e.target.value)}/>
-//       <button onClick={signIn}>LogIn</button>
-//     </div>
-//   )
-// }
-
-// export default SignIn
-
 export default function SimpleCard() {
   const navigate = useNavigate();
   const [currentEmail, setCurrentEmail] = React.useState("");
