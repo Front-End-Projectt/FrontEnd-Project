@@ -46,7 +46,7 @@ function Profile() {
             <Avatar
               size={'sm'}
               src={
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s'
+                'https://cdn-icons-png.flaticon.com/512/149/149071.png'
               }
             />
             <VStack

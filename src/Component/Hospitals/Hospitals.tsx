@@ -37,12 +37,13 @@ function Hospitals() {
     <Box m={5}>
       <Heading mb={2}>المستشفيات</Heading>
       <Text fontSize={'lg'}>
-        لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو
-        أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم
-        أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت
-        أليكيوب أكس أيا كوممودو كونسيكيوات . ديواس أيوتي أريري دولار إن
-        ريبريهينديرأيت فوليوبتاتي فيلايت أيسسي كايلليوم دولار أيو فيجايت نيولا
-        باراياتيور. أيكسسيبتيور ساينت أوككايكات كيوبايداتات نون بروايدينت ,سيونت
+        المستشفي هو وسيلة للرعاية الصحية الذاتية التي توفر خدمات الرعاية الصحية
+        الأساسية والآثار التتبعية للحالات الصحية على المستويات المختلفة. ويقدم
+        المستشفي خدمات طبية، علاجية، صحية راجعة وأخرى كخدمات مرافقة (استقبال
+        الزوار، ووظائف الاستخدام المتوازن وخدمات الخلوص) لدعم العلاج الطبي.وتشمل
+        الخدمات الطبية التي يقدمها المستشفى العلاج باستخدام الادوية والعلاج
+        الصحي، وتكوين الشخص ونمو القدرات، والبحث عن الأمراض المزمنة وعلاجها، و
+        غيرها من الخدمات.
       </Text>
       <Select
         bg={'white'}
@@ -61,37 +62,39 @@ function Hospitals() {
       <Box>
         <SimpleGrid
           columns={{ base: 1, lg: 2, xl: 3 }}
-          justifyContent={'space-between'}
-          gap={10}
+          justifyContent={'center'}
+          spacing={10}
         >
-          {arr.map((value , i) => (
+          {arr.map((value) => (
             <Box
-              key={i}
+              key={value.title}
               display={'flex'}
               justifyContent={'space-between'}
               flexDirection={'column'}
-              maxW={'500px'}
+              maxW={'445px'}
               w={'full'}
               bg={useColorModeValue('white', 'gray.900')}
               boxShadow={'2xl'}
               rounded={'md'}
               p={6}
+              overflow={'hidden'}
             >
-              <Heading textAlign={'center'} mb={5}>{value.title}</Heading>
+              <Heading mb={5}>{value.title}</Heading>
               <Stack>
-                <Text overflow={'hidden'} whiteSpace={'nowrap'} textOverflow={'ellipsis'} color={'gray.500'}>{value.description}</Text>
+                <Text
+                  overflow={'hidden'}
+                  whiteSpace={'nowrap'}
+                  textOverflow={'ellipsis'}
+                  color={'gray.500'}
+                >
+                  {value.description}
+                </Text>
               </Stack>
               <Flex
                 flexDirection={'row'}
                 justifyContent={'space-between'}
                 alignItems={'flex-end'}
               >
-                <Button
-                  mt={5}
-                  onClick={() => navigate(`/Hospitals/${value.id}`)}
-                >
-                  أعرف المزيد
-                </Button>
                 <Badge
                   px={2}
                   py={1}
@@ -100,6 +103,18 @@ function Hospitals() {
                 >
                   #{value.city}
                 </Badge>
+                <Button
+                  _hover={{
+                    backgroundColor: 'rgba(0, 135, 85, 0.7)',
+                    color: '#ffffff',
+                    transition: '150ms',
+                  }}
+                  variant="outline"
+                  mt={5}
+                  onClick={() => navigate(`/Hospitals/${value.id}`)}
+                >
+                  عرض المزيد
+                </Button>
               </Flex>
             </Box>
           ))}
