@@ -37,6 +37,7 @@ function Teacher({ setInfo }: any) {
 
   return (
     <>
+    <Box m={5}>
       <Heading as="h2">
         معلمي الظل
       </Heading>
@@ -124,6 +125,7 @@ function Teacher({ setInfo }: any) {
           </Center>
         ))}
       </SimpleGrid>
+      </Box>
     </>
   );
 }

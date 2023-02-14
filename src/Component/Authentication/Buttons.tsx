@@ -4,9 +4,9 @@ import React from "react";
 
 function Buttons() {
   return (
-    <Flex>
+    <Flex gap={2}>
       <Link to="/SignIn">
-        <Button>تسجيل الدخول</Button>{" "}
+        <Button>تسجيل الدخول</Button>
       </Link>
       <Link to="/Register">
         <Button>حساب جديد</Button>

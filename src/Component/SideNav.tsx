@@ -92,7 +92,7 @@ export default function SideNav({
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box mr={{ base: 0, md: 60 }} p="4">
+      <Box mr={{ base: 0, md: 60 }} >
         {children}
       </Box>
     </Box>
