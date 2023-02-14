@@ -79,7 +79,7 @@ function Hospitals() {
               p={6}
               overflow={'hidden'}
             >
-              <Heading mb={5}>{value.title}</Heading>
+              <Heading fontSize={'3xl'} mb={5}>{value.title}</Heading>
               <Stack>
                 <Text
                   overflow={'hidden'}
