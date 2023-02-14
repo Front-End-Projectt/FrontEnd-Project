@@ -1,5 +1,5 @@
 import React from "react";
-import { Select, SimpleGrid } from "@chakra-ui/react";
+import { Flex, Select, SimpleGrid } from "@chakra-ui/react";
 import {
   Heading,
   Avatar,
@@ -14,7 +14,7 @@ import {
 import techArr from "./ArrayTeacher";
 import { useNavigate, Link, useParams, useLocation } from "react-router-dom";
 import StarRating from "./StarRating";
-
+import App from '../../App.css';
 function Teacher({ setInfo }: any) {
   const navigate = useNavigate();
 
@@ -38,6 +38,7 @@ function Teacher({ setInfo }: any) {
   return (
     <>
     <Box m={5}>
+      <Flex flexDir={"column"} gap={4} p={7} bg={"white"} >
       <Heading as="h2">
         معلمي الظل
       </Heading>
@@ -48,6 +49,7 @@ function Teacher({ setInfo }: any) {
         أيضًا بتوفير دعم للطلاب الذين يواجهون أي مشاكل في مجال التصرف، وبتوفير
         دعم من خلال التدريب الذكي وإعدادهم لمختلف الحياة.
       </Text>
+      </Flex>
       <Select
         bg={"white"}
         pr={3}
