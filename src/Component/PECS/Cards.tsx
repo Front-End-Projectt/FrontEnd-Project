@@ -19,8 +19,11 @@ import {
     Divider,
   } from '@chakra-ui/react';
 import axios from 'axios';
-import { useState } from 'react';
+import { createContext, useState } from 'react';
+import { Provider } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import CardsData from './CardsData';
 
   type Categ = {
     data:{
@@ -29,29 +32,26 @@ import { useNavigate } from 'react-router-dom';
     }[]
   }
 
-const cardData = [
-  {
-    img: "https://cdn-icons-png.flaticon.com/512/3002/3002611.png",
-    title: 'أنا',
-  },
-  
-];
 
 
-function Cards({setInfo}:any) {
+function Cards() {
+    const cardDispatch = useDispatch()
     const navigate = useNavigate();
-    // const [img , setImg] = useState("")
-    // const [title , setTitle] = useState("")
 
-    const addCard = (i:number)=>{
+
+    const addPECS = (i:number)=>{
+        // CardsData[i] <Cards/>
         
-        setInfo(cardData[i])
+        const action = {type: addPECS, payload: CardsData[i]}
+        cardDispatch(action)
         navigate("/PECS/Categories")
     }
+
     return (
         <>
-            {cardData.map((e,i) => 
-            <Card key={e.title}  maxW='sm' textAlign={"center"} borderRadius={30}  cursor={"pointer"} onClick={()=>addCard(i)}>
+            {CardsData.map((e,i) => 
+
+            <Card key={e.title}  maxW='sm' textAlign={"center"} borderRadius={30}  cursor={"pointer"} onClick={()=>addPECS(i)}>
                 <CardBody>
                     <Image
                     src= {e.img}
