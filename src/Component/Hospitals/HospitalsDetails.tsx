@@ -22,9 +22,6 @@ function HospitalsDetails() {
   let i = Number((id as unknown as number) - 1);
 
   return (
-    // <div>
-    // </div>
-
     <>
       <Flex
         flexDirection={{base:'column' , lg:'row'}}

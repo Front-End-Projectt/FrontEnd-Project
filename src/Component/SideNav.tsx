@@ -55,7 +55,7 @@ interface LinkItemProps {
   icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: "الرئيسية ", icon: FiHome, path: "HOme" },
+  { name: "الرئيسية ", icon: FiHome, path: "Home" },
   { name: "المستشفيات ", icon: CiHospital1, path: "Hospitals" },
   { name: "مراكز التدريب", icon: BiBuildingHouse, path: "Diagnosis" },
   { name: "معلمي الظل", icon: FiUsers, path: "Teachers" },
@@ -81,7 +81,7 @@ export default function SideNav({
       <Drawer
         autoFocus={false}
         isOpen={isOpen}
-        placement="left"
+        placement="right"
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
