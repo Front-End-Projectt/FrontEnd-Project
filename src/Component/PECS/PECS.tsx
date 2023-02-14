@@ -10,13 +10,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import CardsData from "./CardsData"
 
 function PECS( ) {
-  let location = useLocation();
-  console.log(location.pathname); // /PECS/Categories
+  // let location = useLocation();
+  // console.log(location.pathname); // /PECS/Categories
   
 
   
   const cardSelector = useSelector((state:any)=> {
-    console.log(state.data);
+    // console.log(state.data);
     
       
       if(!Object.keys(state.data).length){
@@ -64,8 +64,8 @@ function PECS( ) {
 
 
   return (
-    <>
-        <Flex p={4} justifyContent={"space-between"} border={"1px solid"}>
+    <Box p={4}>
+        <Flex p={4} justifyContent={"space-between"} border={"1px solid"} >
             <Flex p={4} >
               { cardSelector }
             </Flex>
@@ -80,7 +80,7 @@ function PECS( ) {
 
 
         </SimpleGrid>
-    </>
+    </Box>
   )
 }
 
