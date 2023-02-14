@@ -4,7 +4,7 @@ import CommunityCard from "./CommunityCard";
 
 function CommunityPage() {
   return (
-    <Box m={5} gap={7} padding>
+    <Box m={5} gap={7}>
       <Heading as="h2">المجتمع</Heading>
       <Text>
         معلم التوحد هو مشغل مهنة اجتماعية يراقب الطلاب الذين يعانون من اضطراب

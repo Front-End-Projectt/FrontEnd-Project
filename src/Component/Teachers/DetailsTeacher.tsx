@@ -28,7 +28,7 @@ function DetailsTeacher() {
          width={1000}
         shadow="lg"
         rounded="lg"
-        bg="#edf3f8"
+        bg="#fff"
         _dark={{ bg: "gray.800" }}
         mb={8}
         direction="column"
@@ -49,12 +49,12 @@ function DetailsTeacher() {
           }}
           height="100%"
           width="100%"
-          borderRadius="lg"
+          borderRadius=".5rem .5rem 0 0"
           p={8}
           display="flex"
           alignItems="left"
         >
-          <Image
+          <Image bg={"white"}
                       src={
             techArr[i].img
           }

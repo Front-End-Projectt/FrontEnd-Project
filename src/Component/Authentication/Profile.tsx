@@ -31,6 +31,7 @@ function Profile() {
   const SignOut = () =>{
     localStorage.setItem("isLogIn", "false")
     localStorage.removeItem("id")
+    navigate("/Home");
 
   }
   return (
