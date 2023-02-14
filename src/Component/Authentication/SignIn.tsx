@@ -72,7 +72,7 @@ export default function SimpleCard() {
         if (storedEmail === currentEmail && storedPassword === currentPass) {
           localStorage.setItem("isLogIn", "true");
           localStorage.setItem("id", Id)
-          navigate("/الرئيسية");
+          navigate("/Home");
           console.log("Doing Good");
           break;
         } else {
