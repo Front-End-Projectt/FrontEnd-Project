@@ -32,12 +32,13 @@ export default function SimpleCard() {
         const storedEmail = user.email;
         const storedPassword = user.password;
         const Id = user.id;
+        const userName = user.name;
 
         if (storedEmail === currentEmail && storedPassword === currentPass) {
           localStorage.setItem("isLogIn", "true");
-          localStorage.setItem("id", Id)
+          localStorage.setItem("userId", Id);
+          localStorage.setItem("userName", userName);
           navigate("/Home");
-          console.log("Doing Good");
           break;
         } else {
           console.log("No account");
