@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 interface communityCard {
   id: string;
   userId: string;
+  userName: string;
   text: string;
 }
 
@@ -25,6 +26,7 @@ function CommunityPage() {
   const api =
     "https://63e21e1c109336b6cbffdff0.mockapi.io/api/lap/CommunityCards";
   const userId = localStorage.getItem("userId");
+  const userName = localStorage.getItem("userName");
 
   // get data from api
   const getData = () => {
@@ -46,6 +48,7 @@ function CommunityPage() {
         .post(api, {
           id: id,
           userId: userId,
+          userName: userName,
           text: text,
         })
         .then((res) => {
@@ -90,6 +93,7 @@ function CommunityPage() {
                 userId={`${userId}`}
                 text={item.text}
                 cardId={item.id}
+                userName={item.userName}
               />
               <Button
                 _hover={{
@@ -107,26 +111,24 @@ function CommunityPage() {
             </>
           ))}
         </VStack>
-        {/* <CommunityCard id="" name="محمد طه" /> */}
-        {/* <CommunityCard id={""} name={""} /> */}
       </Flex>
       <Box
         display="flex"
         p="1.5em"
-        alignSelf={"center"}
         color="black"
-        border="0.05em #eeeeee solid"
+        alignSelf={"center"}
+        backgroundColor={"#ffffff"}
         rounded="md"
         gap={2}
         flexDirection="row">
         {/* Comment to write */}
         <Input
-          placeholder="أكتب تعليقك هنا"
+          placeholder="أكتب هنا"
           onChange={(e) => {
             setText(e.target.value);
           }}
         />
-        <Button onClick={PostCard}>تعليق</Button>
+        <Button onClick={PostCard}>ارسال</Button>
       </Box>
     </Flex>
   );

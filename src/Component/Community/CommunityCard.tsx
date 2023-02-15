@@ -34,6 +34,7 @@ interface CommentType {
 interface communityCard {
   cardId: string;
   userId: string;
+  userName: string;
   text: string;
 }
 
@@ -100,7 +101,7 @@ function CommunityCard(props: communityCard) {
           <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
             <Avatar name={`${userName}`} src="https://bit.ly/sage-adebayo" />
             <Box>
-              <Heading size="sm">{userName}</Heading>
+              <Heading size="sm">{props.userName}</Heading>
               <Text>طبيب, تخصص </Text>
             </Box>
           </Flex>
