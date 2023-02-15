@@ -20,12 +20,23 @@ import {
   Flex,
   Collapse,
   VStack,
+  CloseButton,
 } from "@chakra-ui/react";
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from '@chakra-ui/react'
 // import { CheckIcon } from "@chakra-ui/icons";
 import { BiChat, BiLike, BiShare, BiDotsVerticalRounded } from "react-icons/bi";
 import Comment from "./Comment";
+import { Link } from "react-router-dom";
 
 function CommunityCard() {
+// // Alert
+const [showAlert, setShowAlert] = useState(false)
+  // end
   // get data from api
   React.useEffect(() => {
     axios.get(api).then((res) => {
@@ -51,9 +62,18 @@ function CommunityCard() {
         });
     //   axios.get(api);
     } else {
-      alert("please login");
+      setShowAlert(true)    
+       // alert("please login");
     }
   };
+
+  const alerts = () => {
+    <Alert status='info'>
+    <AlertIcon />
+    Chakra is going live on August 30th. Get ready!
+  </Alert>
+
+  }
 
   //   const deletItem = (id: any) => {
   //     console.log(id);
@@ -65,6 +85,8 @@ function CommunityCard() {
   //   };
 
   return (
+    <>
+          
     <Card maxW="60%" shadow="sm">
       <CardHeader>
         <Flex gap="4">
@@ -134,6 +156,15 @@ function CommunityCard() {
                 <Comment comment={item.comment} id={item.id} />
               </VStack>
             ))}
+            <Link to={"/signIn"}>
+            {showAlert && (
+        <Alert status='info' h={5}>
+          <AlertIcon />
+          {/* <AlertTitle>Error!</AlertTitle> */}
+          <AlertDescription >سجل دخول</AlertDescription>
+        </Alert>
+      )}
+            </Link>
             <Box
               display="flex"
               p="1.5em"
@@ -149,12 +180,16 @@ function CommunityCard() {
                   setComment(e.target.value);
                 }}
               />
+              
               <Button onClick={PostData}>تعليق</Button>
+              
             </Box>
+            
           </Collapse>
         </Flex>
       </CardFooter>
     </Card>
+    </>
   );
 }
 

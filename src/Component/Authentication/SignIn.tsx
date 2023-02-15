@@ -26,6 +26,8 @@ export default function SimpleCard() {
 
   // localStorage.setItem("isLogIn", userState);
   const signIn = () => {
+    const getLoc = localStorage.getItem("pathname")
+
     axios.get(api).then((usersList) => {
       for (let i = 0; i <= api.length; i++) {
         const user = usersList.data[i];
@@ -36,7 +38,7 @@ export default function SimpleCard() {
         if (storedEmail === currentEmail && storedPassword === currentPass) {
           localStorage.setItem("isLogIn", "true");
           localStorage.setItem("id", Id)
-          navigate("/Home");
+          navigate(`${getLoc}`);
           console.log("Doing Good");
           break;
         } else {
