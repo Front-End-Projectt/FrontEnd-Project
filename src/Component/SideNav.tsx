@@ -156,8 +156,9 @@ interface NavItemProps extends FlexProps {
 // Nav item link
 const NavItem = ({ icon, children, value, ...rest }: NavItemProps) => {
   return (
-    <Link to={`/${value}`} style={{ textDecoration: "none" }}>
+    <Link    to={`/${value}`} style={{ textDecoration: "none" }}>
       <Flex
+      
         align="center"
         p="4"
         mx="4"
@@ -235,6 +236,7 @@ const MobileNav = (
         fontSize="2xl"
         fontFamily="monospace"
         fontWeight="bold"
+        
       >
         طيف
       </Text>

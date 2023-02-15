@@ -60,9 +60,6 @@ export default function Register() {
         bg={useColorModeValue('gray.50', 'gray.800')}>
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
           <Stack align={'center'}>
-            <Heading fontSize={'4xl'} textAlign={'center'}>
-              تسجيل
-            </Heading>
             <Text fontSize={'lg'} color={'gray.600'}>
               {/* to enjoy all of our cool features ✌️ */}
             </Text>
@@ -73,6 +70,9 @@ export default function Register() {
             boxShadow={'lg'}
             p={8}>
             <Stack spacing={4}>
+            <Heading fontSize={'3xl'} textAlign={'center'}>
+              تسجيل
+            </Heading>
               <HStack>
                 <Box>
 
