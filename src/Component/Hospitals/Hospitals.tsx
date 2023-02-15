@@ -29,7 +29,7 @@ function Hospitals() {
   };
 
   return (
-    <Box m={5}>
+    <Box p={5}>
       <Flex flexDir={'column'} bg={'white'} p={7} borderRadius={10} gap={7}>
       <Heading>المستشفيات</Heading>
       <Text fontSize={'lg'}>

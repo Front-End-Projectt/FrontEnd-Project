@@ -15,6 +15,7 @@ import techArr from "./ArrayTeacher";
 import { useNavigate, Link, useParams, useLocation } from "react-router-dom";
 import StarRating from "./StarRating";
 import App from '../../App.css';
+
 function Teacher({ setInfo }: any) {
   const navigate = useNavigate();
 
@@ -29,7 +30,7 @@ function Teacher({ setInfo }: any) {
 
   return (
     <>
-    <Box m={5}>
+    <Box>
       <Flex flexDir={"column"} gap={7} p={7} bg={"white"} borderRadius={10}>
       <Heading as="h2">
         معلمي الظل

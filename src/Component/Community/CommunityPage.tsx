@@ -68,7 +68,7 @@ function CommunityPage() {
     console.log(data);
   };
   return (
-    <Flex m={5} gap={7} flexDirection="column">
+    <Flex p={5} gap={7} flexDirection="column">
       <Flex flexDir={"column"} gap={7} p={7} bg={"white"} borderRadius={10}>
         <Heading as="h2">المجتمع</Heading>
         <Text>
