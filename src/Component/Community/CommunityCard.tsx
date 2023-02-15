@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Stack,
   Input,
@@ -25,53 +25,83 @@ import {
 import { BiChat, BiLike, BiShare, BiDotsVerticalRounded } from "react-icons/bi";
 import Comment from "./Comment";
 
-function CommunityCard() {
-  // get data from api
-  React.useEffect(() => {
-    axios.get(api).then((res) => {
-      setData(res.data);
-    });
-  });
+interface CommentType {
+  id: string;
+  comment: string;
+  cardId: string;
+}
+
+interface communityCard {
+  cardId: string;
+  userId: string;
+  userName: string;
+  text: string;
+}
+
+let commentsList: CommentType[] = [];
+
+function CommunityCard(props: communityCard) {
   const { isOpen, onToggle } = useDisclosure();
-  const [comment, setComment] = React.useState<string>("");
-  const [data, setData] = React.useState<any[]>([]);
-  const [id, setId] = React.useState<string>("");
+  const [comment, setComment] = useState<string>("");
+  const [data, setData] = useState<any[]>([]);
+  const [id, setId] = useState<string>("");
   const api = "https://63e750caac3920ad5bdc24a6.mockapi.io/Comment";
+  const userName = localStorage.getItem("userName");
+  const userId = props.userId;
+  const cardId = props.cardId;
+
+  // get data from api
+  const getData = () => {
+    axios.get(api).then((res) => {
+      commentsList.push(res.data);
+      setData(res.data);
+      console.log(`Get comment: ${res.data}`);
+      console.log(data);
+    });
+  };
+
+  useEffect(() => getData(), []);
+
   // post data to api
   const PostData = () => {
     let loc = localStorage.getItem("isLogIn");
+    getData();
     if (loc == "true") {
       axios
         .post(api, {
-          comment,
+          comment: comment,
+          userId: userId,
+          cardId: cardId,
         })
         .then((res) => {
-          console.log(res);
           localStorage.setItem("id", res.data.id);
+          getData();
         });
-    //   axios.get(api);
     } else {
       alert("please login");
     }
   };
 
-  //   const deletItem = (id: any) => {
-  //     console.log(id);
-  //     axios
-  //       .delete(`https://63e750caac3920ad5bdc24a6.mockapi.io/Comment/${id}`)
-  //       .then((res) => {
-  //         setData(data.filter((del) => del.id != id));
-  //       });
-  //   };
+  const deletItem = (id: any) => {
+    console.log(id);
+    axios.delete(`${api}/${id}`).then((res) => {
+      setData(
+        data.filter(
+          (del: Comment) => del.id != id && del.cardId != props.cardId
+        )
+      );
+    });
+    console.log(data);
+  };
 
   return (
-    <Card maxW="60%" shadow="sm">
+    <Card shadow="sm">
       <CardHeader>
         <Flex gap="4">
           <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-            <Avatar name="محمد طه" src="https://bit.ly/sage-adebayo" />
+            <Avatar name={`${userName}`} src="https://bit.ly/sage-adebayo" />
             <Box>
-              <Heading size="sm">محمد طه</Heading>
+              <Heading size="sm">{props.userName}</Heading>
               <Text>طبيب, تخصص </Text>
             </Box>
           </Flex>
@@ -85,11 +115,7 @@ function CommunityCard() {
       </CardHeader>
 
       <CardBody>
-        <Text>
-          With Chakra UI, I wanted to sync the speed of development with the
-          speed of design. I wanted the developer to be just as excited as the
-          designer to create a screen.
-        </Text>
+        <Text>{props.text}</Text>
       </CardBody>
 
       {/* Card image */}
@@ -129,11 +155,36 @@ function CommunityCard() {
         <Flex flexDirection="column-reverse" justifyContent={"center"}>
           <Collapse in={isOpen} animateOpacity>
             {/* Commetns section generator */}
-            {data.map((item: any) => (
-              <VStack w={"full"}>
-                <Comment comment={item.comment} id={item.id} />
-              </VStack>
-            ))}
+            <VStack w={"full"}>
+              {data.map((item: CommentType) => (
+                <>
+                  {console.log(`Item: ${item.comment}`)}
+                  {cardId == item.cardId ? (
+                    <>
+                      <Comment
+                        comment={item.comment}
+                        id={item.id}
+                        userId={userId}
+                        cardId={cardId}
+                      />
+                      <Button
+                        _hover={{
+                          backgroundColor: "rgba(250, 250, 250, 0.8)",
+                        }}
+                        variant="outline"
+                        border={"none"}
+                        color={"red"}
+                        alignSelf={"end"}
+                        onClick={() => {
+                          deletItem(item.id);
+                        }}>
+                        Delete
+                      </Button>
+                    </>
+                  ) : null}
+                </>
+              ))}
+            </VStack>
             <Box
               display="flex"
               p="1.5em"
