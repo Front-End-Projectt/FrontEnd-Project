@@ -96,7 +96,7 @@ function HomePage() {
    <>
    
    {/* Header */}
-   <Box zIndex={-100} bg={"white"} p={5}  borderRadius={10}>
+   <Box zIndex={-100} bg={"white"} p={5} m={5} borderRadius={10}>
    <Container maxW={'5xl'}>
       <Stack
         textAlign={'center'}
