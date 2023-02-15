@@ -26,7 +26,6 @@ function HospitalsDetails() {
       <Flex
         flexDirection={{base:'column' , lg:'row'}}
         justifyContent={'space-around'}
-        gridColumn="span 8"
         p={8}
         gap={{base:10 , lg:0}}
         width="full"
@@ -112,11 +111,7 @@ function HospitalsDetails() {
             color={useColorModeValue('gray.700', 'gray.400')}
             px={3}>
             {value.jobTitle}
-          </Text>
-  
-          
-          {/* <StarRating/> */}
-          
+          </Text>          
         </Box>
         ))}
         </Flex>

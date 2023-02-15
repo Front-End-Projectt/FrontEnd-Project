@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from 'react';
 
 import {
   IconButton,
@@ -32,7 +32,6 @@ import {
   FiChevronDown,
 } from "react-icons/fi";
 
-import Diagnosis from "./Diagnosis";
 import Register from "./Authentication/Register";
 
 import { FiHome, FiMenu, FiUsers } from "react-icons/fi";
@@ -57,7 +56,7 @@ interface LinkItemProps {
 const LinkItems: Array<LinkItemProps> = [
   { name: "الرئيسية ", icon: FiHome, path: "Home" },
   { name: "المستشفيات ", icon: CiHospital1, path: "Hospitals" },
-  { name: "مراكز التدريب", icon: BiBuildingHouse, path: "Diagnosis" },
+  { name: "مراكز التدريب", icon: BiBuildingHouse, path: "Training" },
   { name: "معلمي الظل", icon: FiUsers, path: "Teachers" },
   { name: "بطاقات الطلب", icon: BsCardText, path: "PECS/Categories" },
   { name: "المجتمع", icon: CiGlobe, path: "Community" },
@@ -92,7 +91,6 @@ export default function SideNav({
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
       <Box mr={{ base: 0, md: 60 }} >
         {children}
@@ -106,6 +104,15 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+  const [width, setWidth] = useState(window.innerWidth);
+  const updateDimensions = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
   return (
     <Box
       transition="3s ease"
@@ -118,7 +125,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+          طيف
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
@@ -136,6 +143,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           {link.name}
         </NavItem>
       ))}
+      {width < 474 ? Greeting() : null}
     </Box>
   );
 };
@@ -179,7 +187,7 @@ const NavItem = ({ icon, children, value, ...rest }: NavItemProps) => {
 
 interface MobileProps extends FlexProps {
   onOpen: () => void;
-}
+} 
 function Greeting() {
   const isLoggedIn = localStorage.isLogIn;
   if (isLoggedIn == "false") {
@@ -193,6 +201,16 @@ const MobileNav = (
 
   { comp }: { comp: ReactNode }
 ) => {
+
+  const [width, setWidth] = useState(window.innerWidth);
+  const updateDimensions = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
   return (
     <Flex
     zIndex={-1000}
@@ -212,16 +230,15 @@ const MobileNav = (
         aria-label="open menu"
         icon={<FiMenu />}
       />
-
       <Text
         display={{ base: "flex", md: "none" }}
         fontSize="2xl"
         fontFamily="monospace"
-        fontWeight="bold">
-        Logo
+        fontWeight="bold"
+      >
+        طيف
       </Text>
-
-      {Greeting()}
+      {width > 474 ? Greeting() : null}
     </Flex>
   );
 };

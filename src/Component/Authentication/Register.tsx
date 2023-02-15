@@ -33,7 +33,6 @@ export default function Register() {
     const [name, setName] = React.useState("")
     const [email, setEmail] = React.useState("")
     const [password, setPass] = React.useState("")
-
     const api = "https://63e21e03109336b6cbffdd5b.mockapi.io/lap/signUp"
 
     const signUp = ()=>{

@@ -4,7 +4,6 @@ import Register from './Component/Authentication/Register';
 import SignIn from './Component/Authentication/SignIn';
 import './App.css';
 import Comment from './Component/Community/Comment';
-import Diagnosis from './Component/Diagnosis';
 import Categories from './Component/PECS/Categories';
 import PECS from './Component/PECS/PECS';
 import SideNav from './Component/SideNav';
@@ -15,6 +14,8 @@ import HomePage from './Component/HomePage';
 import DetailsTeacher from './Component/Teachers/DetailsTeacher';
 import HospitalsDetails from './Component/Hospitals/HospitalsDetails';
 import CommunityPage from './Component/Community/CommunityPage';
+import TrainingCenters from './Component/TrainingCenters/TrainingCenters';
+import TrainingDetails from './Component/TrainingCenters/TrainingDetails';
 
 function App() {
   return (
@@ -35,6 +36,14 @@ function App() {
           element={<SideNav comp={undefined} children={<HospitalsDetails />} />}
         ></Route>
         <Route
+          path="Training"
+          element={<SideNav comp={undefined} children={<TrainingCenters />} />}
+        ></Route>
+        <Route
+          path="Training/:id"
+          element={<SideNav comp={undefined} children={<TrainingDetails />} />}
+        ></Route>
+        <Route
           path="Community"
           element={<SideNav comp={undefined} children={<CommunityPage />} />}
         ></Route>
@@ -53,7 +62,6 @@ function App() {
           <Route path="Categories" element={<Categories />} />
           <Route path="Cards" element={<Cards />} />
         </Route>
-        <Route path="diagnosis" element={<Diagnosis />}></Route>
         <Route path="register" element={<Register />}></Route>
         <Route path="signIn" element={<SignIn />}></Route>
       </Routes>

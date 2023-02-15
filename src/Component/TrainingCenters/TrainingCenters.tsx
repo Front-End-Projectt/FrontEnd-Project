@@ -2,46 +2,51 @@ import {
   Badge,
   Box,
   Button,
-  Center,
+  filter,
   Flex,
+  Text,
   Heading,
   Select,
+  Switch,
   SimpleGrid,
   Stack,
-  Text,
   useColorModeValue,
+  Center,
+  Avatar,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
-import hospArr from "./hospitalArray";
-
-function Hospitals() {
+import { useNavigate } from "react-router-dom";
+import StarRating from "../Teachers/StarRating";
+import trainArr from "./TrainingCentersArray";
+function TrainingCenters() {
   const navigate = useNavigate();
 
-  const [arr, setArr] = useState(hospArr);
+  const [arr, setArr] = useState(trainArr);
 
   const filter = (city: string) => {
-    if( city === '') {
-      setArr(hospArr)
+    if (city === "") {
+      setArr(trainArr);
     } else {
-      setArr(hospArr.filter((e) => e.city === city))
+      setArr(trainArr.filter((e) => e.city === city));
     }
   };
 
   return (
     <Box m={5}>
-      <Flex flexDir={'column'} bg={'white'} p={7} borderRadius={10} gap={7}>
-      <Heading>المستشفيات</Heading>
-      <Text fontSize={'lg'}>
-        المستشفى هو وسيلة للرعاية الصحية الذاتية التي توفر خدمات الرعاية الصحية
-        الأساسية والآثار التتبعية للحالات الصحية على المستويات المختلفة. ويقدم
-        المستشفى خدمات طبية، علاجية، صحية راجعة وأخرى كخدمات مرافقة (استقبال
-        الزوار، ووظائف الاستخدام المتوازن وخدمات الخلوص) لدعم العلاج الطبي.وتشمل
-        الخدمات الطبية التي يقدمها المستشفى العلاج باستخدام الادوية والعلاج
-        الصحي، وتكوين الشخص ونمو القدرات، والبحث عن الأمراض المزمنة وعلاجها، و
-        غيرها من الخدمات.
-      </Text>
+      <Flex flexDir={"column"} bg={"white"} p={7} borderRadius={10} gap={7}>
+        <Heading>مراكز التدريب</Heading>
+        <Text fontSize={"lg"}>
+          مراكز التدريب هي وحدات تعليمية وتربوية تحتوي على مجموعة من الخدمات
+          التي تخدم الأطفال ذوي الاحتياجات الخاصة، فضلاً عن الأطفال الذين لا
+          يعانون من وجود حالات معينة. المراكز تطور الجوانب الدفاعية والاجتماعية
+          للأطفال، وتوفر الحماية اللازمة للأطفال في جميع المراحل السنية،
+          وبالإضافة إلى ذلك، يوفر هذا النوع من مراكز التدريب برامج الحضور الشهري المشترك،
+          وبرامج خدمة الأسرة، وخدمات المساعدة التعليمية، وخدمات التغذية،
+          والرعاية الصحية، والتكيف، والخدمات التنظيمية والشؤون القانونية، و
+          غيرها من الخدمات.
+        </Text>
       </Flex>
+
       <Select
         bg={"white"}
         pr={3}
@@ -50,11 +55,16 @@ function Hospitals() {
         w={200}
         size={"md"}
         m={5}
-        onChange={(e) => filter(e.target.value)}>
+        onChange={(e) => filter(e.target.value)}
+      >
         <option value="الرياض">الرياض</option>
-        <option value="الاحساء">الاحساء</option>
-        <option value="حائل">حائل</option>
+        <option value="مكة">مكة</option>
+        <option value="الدمام">الدمام</option>
+        <option value="الخرج">الخرج</option>
+        <option value="جدة">جدة</option>
+
       </Select>
+
       <Box>
         <SimpleGrid
           columns={{ base: 1, lg: 2, xl: 3 }}
@@ -62,7 +72,7 @@ function Hospitals() {
           spacing={10}
           pr={30}
           pl={30}
-          >
+        >
           {arr.map((value) => (
             <Box
               key={value.title}
@@ -75,7 +85,8 @@ function Hospitals() {
               boxShadow={"lg"}
               rounded={"md"}
               p={6}
-              overflow={"hidden"}>
+              overflow={"hidden"}
+            >
               <Heading fontSize={{ base: "3xl", md: "xl" }} mb={5}>
                 {value.title}
               </Heading>
@@ -84,19 +95,22 @@ function Hospitals() {
                   overflow={"hidden"}
                   whiteSpace={"nowrap"}
                   textOverflow={"ellipsis"}
-                  color={"gray.500"}>
+                  color={"gray.500"}
+                >
                   {value.description}
                 </Text>
               </Stack>
               <Flex
                 flexDirection={"row"}
                 justifyContent={"space-between"}
-                alignItems={"flex-end"}>
+                alignItems={"flex-end"}
+              >
                 <Badge
                   px={2}
                   py={1}
                   bg={useColorModeValue("gray.50", "gray.800")}
-                  fontWeight={"400"}>
+                  fontWeight={"400"}
+                >
                   #{value.city}
                 </Badge>
                 <Button
@@ -108,7 +122,8 @@ function Hospitals() {
                   variant="outline"
                   mt={5}
                   fontSize="sm"
-                  onClick={() => navigate(`/Hospitals/${value.id}`)}>
+                  onClick={() => navigate(`/Training/${value.id}`)}
+                >
                   عرض المزيد
                 </Button>
               </Flex>
@@ -120,4 +135,4 @@ function Hospitals() {
   );
 }
 
-export default Hospitals;
+export default TrainingCenters;
