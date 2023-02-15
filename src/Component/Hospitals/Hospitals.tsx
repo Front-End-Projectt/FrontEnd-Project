@@ -13,8 +13,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import HospitalsDetails from "./HospitalsDetails";
-import hospArr from "./hospitalArray.js";
+import hospArr from "./hospitalArray";
 
 function Hospitals() {
   const navigate = useNavigate();
@@ -60,7 +59,10 @@ function Hospitals() {
         <SimpleGrid
           columns={{ base: 1, lg: 2, xl: 3 }}
           justifyContent={"center"}
-          spacing={10}>
+          spacing={10}
+          pr={30}
+          pl={30}
+          >
           {arr.map((value) => (
             <Box
               key={value.title}

@@ -12,10 +12,10 @@ import {
   Badge,
   Stack,
   useColorModeValue,
-} from '@chakra-ui/react';
-import { useParams } from 'react-router-dom';
-import { FaMapPin } from 'react-icons/fa';
-import trainArr from './TrainingArray';
+} from "@chakra-ui/react";
+import { useParams } from "react-router-dom";
+import { FaMapPin } from "react-icons/fa";
+import trainArr from "./TrainingCentersArray";
 
 function TrainingDetails() {
   let { id } = useParams();
@@ -24,8 +24,8 @@ function TrainingDetails() {
   return (
     <>
       <Flex
-        flexDirection={{ base: 'column', lg: 'row' }}
-        justifyContent={'space-around'}
+        flexDirection={{ base: "column", lg: "row" }}
+        justifyContent={"space-around"}
         gridColumn="span 8"
         p={8}
         gap={{ base: 10, lg: 0 }}
@@ -34,13 +34,13 @@ function TrainingDetails() {
         borderRadius="lg"
         textAlign="left"
       >
-        <VStack w={{ lg: '50%', base: '100%' }}>
+        <VStack w={{ lg: "50%", base: "100%" }}>
           <Box>
             <Text
               fontSize="4xl"
               fontWeight="bold"
               color="gray.800"
-              _dark={{ color: 'white' }}
+              _dark={{ color: "white" }}
               textAlign="right"
             >
               {trainArr[i].title}
@@ -49,21 +49,21 @@ function TrainingDetails() {
             <HStack
               spacing={3}
               color="gray.800"
-              _dark={{ color: 'gray.200' }}
+              _dark={{ color: "gray.200" }}
             ></HStack>
-            <HStack spacing={3} color="gray.700" _dark={{ color: 'gray.200' }}>
+            <HStack spacing={3} color="gray.700" _dark={{ color: "gray.200" }}>
               <FaMapPin size={20} />
               <Text fontSize="lg">{trainArr[i].city}</Text>
             </HStack>
-            <Text mt={5} textAlign={'right'} fontSize={'xl'}>
+            <Text mt={5} textAlign={"right"} fontSize={"xl"}>
               {trainArr[i].description}
             </Text>
           </Box>
         </VStack>
-        <VStack w={{ lg: '30%', base: '100%' }} h={'400px'}>
+        <VStack w={{ lg: "30%", base: "100%" }} h={"400px"}>
           <iframe
             src={trainArr[i].mapUrl}
-            className={'frame'}
+            className={"frame"}
             width="100%"
             height="100%"
             loading="lazy"
@@ -75,7 +75,7 @@ function TrainingDetails() {
         shadow="md"
         rounded="lg"
         bg="#edf3f8"
-        _dark={{ bg: 'gray.800' }}
+        _dark={{ bg: "gray.800" }}
         alignItems="center"
         justifyContent="center"
       >

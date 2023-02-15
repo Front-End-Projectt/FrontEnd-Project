@@ -7,168 +7,117 @@ import {
   Text,
   Heading,
   Select,
+  Switch,
   SimpleGrid,
   Stack,
   useColorModeValue,
-} from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import trainArr from './TrainingArray.js';
+  Center,
+  Avatar,
+} from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import StarRating from "../Teachers/StarRating";
+import trainArr from "./TrainingCentersArray";
 function TrainingCenters() {
   const navigate = useNavigate();
 
-  const [arr, setArr] = useState<any[]>(trainArr);
-  const [city, setCity] = useState('');
-  const [type, setType] = useState('');
+  const [arr, setArr] = useState(trainArr);
 
-  const filter = (city?: string, type?: string) => {
-    // if (city !== undefined){
-    // setCity(city as string)
-    // }
-    // if (type !== undefined){
-    //   setType(type as string)
-    //   }
-    // cityFilter();
-    // typeFilter();
-  };
-
-  const cityFilter = (filteredData: object[]): object[] => {
-    // console.log(city + 'in city filter');
-
-    if (!city) {
-      return filteredData;
+  const filter = (city: string) => {
+    if (city === "") {
+      setArr(trainArr);
+    } else {
+      setArr(trainArr.filter((e) => e.city === city));
     }
-    const fillteredCites = trainArr.filter((e) => e.city === city);
-
-    return fillteredCites;
-    // console.log(arr);
   };
-
-  const typeFilter = (filteredData: object[]): object[] => {
-    // console.log(type + 'in type filter');
-
-    if (!type) {
-      return filteredData;
-    }
-    const fillteredTypes = trainArr.filter((e) => e.type === type);
-
-    return fillteredTypes;
-    // console.log(arr);
-  };
-
-  const handleCityChange = (event: any) => {
-    setCity(event.target.value);
-  };
-
-  const handleTypeChange = (event: any) => {
-    setType(event.target.value);
-  };
-
-  useEffect(() => {
-    let filteredData = cityFilter(trainArr);
-    console.log(filteredData);
-    filteredData = cityFilter(typeFilter(filteredData));
-    setArr(filteredData);
-  }, [city, type]);
-
-  console.log(city, type);
 
   return (
     <Box m={5}>
-      <Flex flexDir={'column'} bg={'white'} p={7} borderRadius={10} gap={7}>
+      <Flex flexDir={"column"} bg={"white"} p={7} borderRadius={10} gap={7}>
         <Heading>مراكز التدريب</Heading>
-        <Text fontSize={'lg'}>
-          المستشفى هو وسيلة للرعاية الصحية الذاتية التي توفر خدمات الرعاية
-          الصحية الأساسية والآثار التتبعية للحالات الصحية على المستويات
-          المختلفة. ويقدم المستشفى خدمات طبية، علاجية، صحية راجعة وأخرى كخدمات
-          مرافقة (استقبال الزوار، ووظائف الاستخدام المتوازن وخدمات الخلوص) لدعم
-          العلاج الطبي.وتشمل الخدمات الطبية التي يقدمها المستشفى العلاج باستخدام
-          الادوية والعلاج الصحي، وتكوين الشخص ونمو القدرات، والبحث عن الأمراض
-          المزمنة وعلاجها، و غيرها من الخدمات.
+        <Text fontSize={"lg"}>
+          مراكز التدريب هي وحدات تعليمية وتربوية تحتوي على مجموعة من الخدمات
+          التي تخدم الأطفال ذوي الاحتياجات الخاصة، فضلاً عن الأطفال الذين لا
+          يعانون من وجود حالات معينة. المراكز تطور الجوانب الدفاعية والاجتماعية
+          للأطفال، وتوفر الحماية اللازمة للأطفال في جميع المراحل السنية،
+          وبالإضافة إلى ذلك، يوفر هذا النوع من مراكز التدريب برامج الحضور الشهري المشترك،
+          وبرامج خدمة الأسرة، وخدمات المساعدة التعليمية، وخدمات التغذية،
+          والرعاية الصحية، والتكيف، والخدمات التنظيمية والشؤون القانونية، و
+          غيرها من الخدمات.
         </Text>
       </Flex>
-      <Flex flexDir={'row'} justifyContent={'space-evenly'}>
-        <Select
-          bg={'white'}
-          pr={3}
-          _hover={{ cursor: 'pointer' }}
-          placeholder="المدينة"
-          w={200}
-          size={'md'}
-          m={5}
-          onChange={(e) => handleCityChange(e)}
-        >
-          <option value="الرياض">الرياض</option>
-          <option value="الاحساء">الاحساء</option>
-          <option value="حائل">حائل</option>
-        </Select>
 
-        <Select
-          bg={'white'}
-          pr={3}
-          _hover={{ cursor: 'pointer' }}
-          placeholder="النوع"
-          w={200}
-          size={'md'}
-          m={5}
-          onChange={(e) => handleTypeChange(e)}
-        >
-          <option value="مركز">مراكز</option>
-          <option value="افراد">افراد</option>
-        </Select>
-      </Flex>
+      <Select
+        bg={"white"}
+        pr={3}
+        _hover={{ cursor: "pointer" }}
+        placeholder="المدينة"
+        w={200}
+        size={"md"}
+        m={5}
+        onChange={(e) => filter(e.target.value)}
+      >
+        <option value="الرياض">الرياض</option>
+        <option value="مكة">مكة</option>
+        <option value="الدمام">الدمام</option>
+        <option value="الخرج">الخرج</option>
+        <option value="جدة">جدة</option>
+
+      </Select>
 
       <Box>
         <SimpleGrid
           columns={{ base: 1, lg: 2, xl: 3 }}
-          justifyContent={'center'}
+          justifyContent={"center"}
           spacing={10}
+          pr={30}
+          pl={30}
         >
           {arr.map((value) => (
             <Box
               key={value.title}
-              display={'flex'}
-              justifyContent={'space-between'}
-              flexDirection={'column'}
-              maxW={'445px'}
-              w={'full'}
-              bg={useColorModeValue('white', 'gray.900')}
-              boxShadow={'lg'}
-              rounded={'md'}
+              display={"flex"}
+              justifyContent={"space-between"}
+              flexDirection={"column"}
+              maxW={"445px"}
+              w={"full"}
+              bg={useColorModeValue("white", "gray.900")}
+              boxShadow={"lg"}
+              rounded={"md"}
               p={6}
-              overflow={'hidden'}
+              overflow={"hidden"}
             >
-              <Heading fontSize={{ base: '3xl', md: 'xl' }} mb={5}>
+              <Heading fontSize={{ base: "3xl", md: "xl" }} mb={5}>
                 {value.title}
               </Heading>
               <Stack>
                 <Text
-                  overflow={'hidden'}
-                  whiteSpace={'nowrap'}
-                  textOverflow={'ellipsis'}
-                  color={'gray.500'}
+                  overflow={"hidden"}
+                  whiteSpace={"nowrap"}
+                  textOverflow={"ellipsis"}
+                  color={"gray.500"}
                 >
                   {value.description}
                 </Text>
               </Stack>
               <Flex
-                flexDirection={'row'}
-                justifyContent={'space-between'}
-                alignItems={'flex-end'}
+                flexDirection={"row"}
+                justifyContent={"space-between"}
+                alignItems={"flex-end"}
               >
                 <Badge
                   px={2}
                   py={1}
-                  bg={useColorModeValue('gray.50', 'gray.800')}
-                  fontWeight={'400'}
+                  bg={useColorModeValue("gray.50", "gray.800")}
+                  fontWeight={"400"}
                 >
                   #{value.city}
                 </Badge>
                 <Button
                   _hover={{
-                    backgroundColor: 'rgba(0, 135, 85, 0.7)',
-                    color: '#ffffff',
-                    transition: '150ms',
+                    backgroundColor: "rgba(0, 135, 85, 0.7)",
+                    color: "#ffffff",
+                    transition: "150ms",
                   }}
                   variant="outline"
                   mt={5}
