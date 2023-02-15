@@ -20,10 +20,18 @@ import {
   Flex,
   Collapse,
   VStack,
+  CloseButton,
 } from "@chakra-ui/react";
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from '@chakra-ui/react'
 // import { CheckIcon } from "@chakra-ui/icons";
 import { BiChat, BiLike, BiShare, BiDotsVerticalRounded } from "react-icons/bi";
 import Comment from "./Comment";
+import { Link } from "react-router-dom";
 
 interface CommentType {
   id: string;
@@ -78,7 +86,8 @@ function CommunityCard(props: communityCard) {
           getData();
         });
     } else {
-      alert("please login");
+      // setShowAlert(true)    
+       // alert("please login");
     }
   };
 
@@ -95,6 +104,7 @@ function CommunityCard(props: communityCard) {
   };
 
   return (
+    <>
     <Card shadow="sm">
       <CardHeader>
         <Flex gap="4">
@@ -200,12 +210,25 @@ function CommunityCard(props: communityCard) {
                   setComment(e.target.value);
                 }}
               />
+              
               <Button onClick={PostData}>تعليق</Button>
+              
             </Box>
+            
           </Collapse>
         </Flex>
       </CardFooter>
     </Card>
+    </>
+          //       <Link to={"/signIn"}>
+          //       {showAlert && (
+          //   <Alert status='info' h={5}>
+          //     <AlertIcon />
+          //     {/* <AlertTitle>Error!</AlertTitle> */}
+          //     <AlertDescription >سجل دخول</AlertDescription>
+          //   </Alert>
+          // )}
+          //       </Link>
   );
 }
 

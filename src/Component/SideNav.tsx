@@ -44,7 +44,7 @@ import { BiBuildingHouse } from "react-icons/bi";
 import { CiHospital1, CiGlobe } from "react-icons/ci";
 import { BsCardText } from "react-icons/bs";
 
-import { Route, Link } from "react-router-dom";
+import { Route, Link, useLocation } from "react-router-dom";
 import { ReactJSXElementAttributesProperty } from "@emotion/react/types/jsx-namespace";
 import { ValueTarget } from "framer-motion";
 
@@ -61,7 +61,7 @@ const LinkItems: Array<LinkItemProps> = [
   { name: "بطاقات الطلب", icon: BsCardText, path: "PECS/Categories" },
   { name: "المجتمع", icon: CiGlobe, path: "Community" },
 ];
-
+const getLoc = localStorage.getItem("pathname")
 export default function SideNav({
   children,
   comp,
@@ -71,6 +71,8 @@ export default function SideNav({
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  let location = useLocation();
+  const setLoc = localStorage.setItem("pathname", location.pathname)
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
       <SidebarContent
@@ -196,6 +198,7 @@ function Greeting() {
 }
 const MobileNav = (
   { onOpen, ...rest }: MobileProps,
+
   { comp }: { comp: ReactNode }
 ) => {
 
@@ -210,6 +213,7 @@ const MobileNav = (
 
   return (
     <Flex
+    zIndex={-1000}
       mr={{ base: 0, md: 60 }}
       px={{ base: 4, md: 4 }}
       height="20"

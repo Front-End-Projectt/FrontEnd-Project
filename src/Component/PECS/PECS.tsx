@@ -8,7 +8,6 @@ import Cards from './Cards'
 import SideNav from '../SideNav'
 import { useSelector, useDispatch, useStore } from 'react-redux'
 import CardsData from "./CardsData"
-import {v4 as uuidv4} from 'uuid';
 import CardProps from './Cards'
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
 import { jsx } from '@emotion/react'

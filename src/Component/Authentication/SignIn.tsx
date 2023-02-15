@@ -26,6 +26,8 @@ export default function SimpleCard() {
 
   // localStorage.setItem("isLogIn", userState);
   const signIn = () => {
+    const getLoc = localStorage.getItem("pathname")
+
     axios.get(api).then((usersList) => {
       for (let i = 0; i <= api.length; i++) {
         const user = usersList.data[i];
