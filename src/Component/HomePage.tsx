@@ -96,7 +96,7 @@ function HomePage() {
    <>
    
    {/* Header */}
-   <Box zIndex={-100} bg={"white"} m={5}  borderRadius={10} p={6}>
+   <Box zIndex={-100} bg={"white"} p={5}  borderRadius={10}>
    <Container maxW={'5xl'}>
       <Stack
         textAlign={'center'}
@@ -252,7 +252,7 @@ function HomePage() {
       </Box>
 {/******** End *******/}
      </Box>
-     <Box m={5} mb={10} background={"white"} borderRadius={10}>
+     <Box p={5} m={5} background={"white"} borderRadius={10}>
       <Text p={10} fontSize={35} align={"center"} fontWeight={600}
           lineHeight={'110%'}>مراجعاتنا</Text>
       <Box m={12}>
