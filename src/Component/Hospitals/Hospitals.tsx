@@ -22,14 +22,10 @@ function Hospitals() {
   const [arr, setArr] = useState(hospArr);
 
   const filter = (city: string) => {
-    if (city === "الرياض") {
-      setArr(hospArr.filter((e) => e.city === "الرياض"));
-    } else if (city === "الاحساء") {
-      setArr(hospArr.filter((e) => e.city === "الاحساء"));
-    } else if (city === "حائل") {
-      setArr(hospArr.filter((e) => e.city === "حائل"));
+    if( city === '') {
+      setArr(hospArr)
     } else {
-      setArr(hospArr);
+      setArr(hospArr.filter((e) => e.city === city))
     }
   };
 
