@@ -121,7 +121,7 @@ function HomePage() {
             px={6}
             colorScheme={'orange'}
             bg={'rgba(0, 135, 85, 0.7)'}
-            _hover={{ bg: 'rgba(0, 135, 85, 0.9)' }}>
+            _hover={{ bg: 'rgba(0, 135, 85, 0.9)' }} >
             البدء
           </Button>
           <Button w={140} rounded={'full'} px={6}>
