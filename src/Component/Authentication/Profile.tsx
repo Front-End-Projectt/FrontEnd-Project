@@ -22,7 +22,6 @@ import {
   MenuList,
   Button,
 } from "@chakra-ui/react";
-import React from "react";
 import { FiChevronDown } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 
@@ -57,12 +56,13 @@ function Profile() {
           </HStack>
         </MenuButton>
         <MenuList
+          cursor={"pointer"}
           bg={useColorModeValue("white", "gray.900")}
           borderColor={useColorModeValue("gray.200", "gray.700")}>
-          <MenuItem>Profile</MenuItem>
-          <MenuItem>Settings</MenuItem>
+          <MenuItem>الحساب</MenuItem>
+          <MenuItem>الأعدادات</MenuItem>
           <MenuDivider />
-          <MenuItem onClick={() => SignOut()}>Sign out</MenuItem>
+          <MenuItem onClick={() => SignOut()}>تسجيل الخروج</MenuItem>
         </MenuList>
       </Menu>
     </Flex>

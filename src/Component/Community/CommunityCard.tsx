@@ -1,8 +1,6 @@
-import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import {
-  Stack,
   Input,
   Card,
   Button,
@@ -13,13 +11,20 @@ import {
   CardFooter,
   Box,
   Avatar,
-  IconButton,
   CardHeader,
   Heading,
   Text,
   Flex,
   Collapse,
   VStack,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  HStack,
+  Fade,
+  IconButton,
   CloseButton,
 } from "@chakra-ui/react";
 import {
@@ -27,10 +32,12 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 // import { CheckIcon } from "@chakra-ui/icons";
 import { BiChat, BiLike, BiShare, BiDotsVerticalRounded } from "react-icons/bi";
 import Comment from "./Comment";
+import CommunityPage from "./CommunityPage";
+import { render } from "react-dom";
 import { Link } from "react-router-dom";
 
 interface CommentType {
@@ -42,8 +49,11 @@ interface CommentType {
 interface communityCard {
   cardId: string;
   userId: string;
+  avatar: string;
   userName: string;
   text: string;
+  img: string;
+  callBack: any;
 }
 
 let commentsList: CommentType[] = [];
@@ -52,11 +62,12 @@ function CommunityCard(props: communityCard) {
   const { isOpen, onToggle } = useDisclosure();
   const [comment, setComment] = useState<string>("");
   const [data, setData] = useState<any[]>([]);
-  const [id, setId] = useState<string>("");
   const api = "https://63e750caac3920ad5bdc24a6.mockapi.io/Comment";
   const userName = localStorage.getItem("userName");
   const userId = props.userId;
   const cardId = props.cardId;
+  const avatar = props.avatar;
+  const img = props.img;
 
   // get data from api
   const getData = () => {
@@ -86,8 +97,8 @@ function CommunityCard(props: communityCard) {
           getData();
         });
     } else {
-      // setShowAlert(true)    
-       // alert("please login");
+      // setShowAlert(true)
+      // alert("please login");
     }
   };
 
@@ -104,39 +115,68 @@ function CommunityCard(props: communityCard) {
   };
 
   return (
-    <>
-    <Card shadow="sm">
-      <CardHeader>
-        <Flex gap="4">
-          <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-            <Avatar name={`${userName}`} src="https://bit.ly/sage-adebayo" />
+    <Card shadow="sm" w={{ base: "90%", md: "80%" }}>
+      <CardHeader padding={5} pb={2}>
+        <Flex>
+          <Flex flex="1" gap="2" alignItems="center" flexWrap="wrap">
+            {avatar != "" ? (
+              <>
+                <Avatar name={`${userName}`} src={avatar} size={"md"} />
+              </>
+            ) : null}
             <Box>
               <Heading size="sm">{props.userName}</Heading>
-              <Text>طبيب, تخصص </Text>
+              <Text>{userName == "محمد طه" ? "معلم تخاطب" : null} </Text>
             </Box>
           </Flex>
-          <IconButton
-            variant="ghost"
-            colorScheme="gray"
-            aria-label="See menu"
-            icon={<BiDotsVerticalRounded />}
-          />
+          <Menu>
+            <MenuButton transition="all 0.3s" _focus={{ boxShadow: "none" }}>
+              <HStack>
+                <Box display={{ base: "flex", md: "flex" }}>
+                  <BiDotsVerticalRounded />
+                </Box>
+              </HStack>
+            </MenuButton>
+            <MenuList
+              bg={useColorModeValue("white", "gray.900")}
+              borderColor={useColorModeValue("gray.200", "gray.700")}>
+              <MenuItem>الحساب الشخصي</MenuItem>
+              <MenuItem>بلاغ</MenuItem>
+              <MenuDivider />
+              <MenuItem
+                color={"red"}
+                onClick={() => {
+                  onToggle;
+                  props.callBack(cardId);
+                }}>
+                حذف
+              </MenuItem>
+            </MenuList>
+          </Menu>
         </Flex>
       </CardHeader>
 
-      <CardBody>
+      <CardBody padding={5} py={1} display={"flex"} flexDir="column" gap={3}>
         <Text>{props.text}</Text>
-      </CardBody>
 
-      {/* Card image */}
-      <Image
-        objectFit="cover"
-        height="10em"
-        src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-      />
+        {/* Card image */}
+        {img != "" ? (
+          <>
+            <Image
+              rounded={5}
+              objectFit="cover"
+              width="full"
+              height="20em"
+              src={img}
+            />
+          </>
+        ) : null}
+      </CardBody>
 
       {/* Card footer */}
       <CardFooter
+        padding={5}
+        py={3}
         flexDirection="column"
         flexWrap="wrap"
         sx={{
@@ -146,17 +186,50 @@ function CommunityCard(props: communityCard) {
         }}>
         {/* Buttons section */}
         <Flex justify="space-between">
-          <Button flex="1" variant="ghost" leftIcon={<BiLike />}>
+          <IconButton
+            aria-label={""}
+            backgroundColor="#fff"
+            icon={<BiLike />}
+            display={{ base: "flex", md: "none" }}
+            onClick={onToggle}
+          />
+          <Button
+            display={{ base: "none", md: "flex" }}
+            flex="1"
+            variant="ghost"
+            leftIcon={<BiLike />}>
             اعجاب
           </Button>
+          <IconButton
+            aria-label={""}
+            backgroundColor="#fff"
+            icon={<BiChat />}
+            display={{ base: "flex", md: "none" }}
+            onClick={onToggle}
+          />
           <Button
+            display={{ base: "none", md: "flex" }}
             flex="1"
             variant="ghost"
             leftIcon={<BiChat />}
             onClick={onToggle}>
             تعليقات
           </Button>
-          <Button flex="1" variant="ghost" leftIcon={<BiShare />}>
+          <IconButton
+            aria-label={""}
+            backgroundColor="#fff"
+            _hover={{
+              backgroundColor: "#fff",
+            }}
+            icon={<BiShare />}
+            display={{ base: "flex", md: "none" }}
+            onClick={onToggle}
+          />
+          <Button
+            display={{ base: "none", md: "flex" }}
+            flex="1"
+            variant="ghost"
+            leftIcon={<BiShare />}>
             مشاركة
           </Button>
         </Flex>
@@ -186,6 +259,7 @@ function CommunityCard(props: communityCard) {
                         color={"red"}
                         alignSelf={"end"}
                         onClick={() => {
+                          onToggle;
                           deletItem(item.id);
                         }}>
                         Delete
@@ -205,30 +279,20 @@ function CommunityCard(props: communityCard) {
               flexDirection="row">
               {/* Comment to write */}
               <Input
+                position={"sticky"}
+                bottom={5}
                 placeholder="أكتب تعليقك هنا"
                 onChange={(e) => {
                   setComment(e.target.value);
                 }}
               />
-              
+
               <Button onClick={PostData}>تعليق</Button>
-              
             </Box>
-            
           </Collapse>
         </Flex>
       </CardFooter>
     </Card>
-    </>
-          //       <Link to={"/signIn"}>
-          //       {showAlert && (
-          //   <Alert status='info' h={5}>
-          //     <AlertIcon />
-          //     {/* <AlertTitle>Error!</AlertTitle> */}
-          //     <AlertDescription >سجل دخول</AlertDescription>
-          //   </Alert>
-          // )}
-          //       </Link>
   );
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import {
   Flex,
@@ -13,6 +13,8 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  Alert,
+  AlertDescription,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -25,8 +27,25 @@ export default function SimpleCard() {
   const api = "https://63e21e03109336b6cbffdd5b.mockapi.io/lap/signUp";
 
   // localStorage.setItem("isLogIn", userState);
+  const [showAlert , setShowAlert] = useState(false)
+
+  const customAlert = (des:string) => {    
+    return (
+      showAlert ? (
+      <Alert   status="error" bg={'white'} color={'red'}  w={'100%'}>
+        <AlertDescription fontSize={'md'}>{des}</AlertDescription>
+      </Alert>
+      ): (
+        <span></span>
+      )
+    ) 
+  }
+
   const signIn = () => {
     const getLoc = localStorage.getItem("pathname")
+
+
+   
 
     axios.get(api).then((usersList) => {
       for (let i = 0; i <= api.length; i++) {
@@ -43,7 +62,7 @@ export default function SimpleCard() {
           navigate(`${getLoc}`);
           break;
         } else {
-          console.log("No account");
+          setShowAlert(true)
         }
       }
       setData(usersList.data);
@@ -84,6 +103,8 @@ export default function SimpleCard() {
                 onChange={(e) => setPass(e.target.value)}
               />
             </FormControl>
+            {showAlert ? customAlert('البريد الالكتروني او كلمة المرور غير صحيحة'):null}
+
             <Stack spacing={10}>
               <Stack
                 direction={{ base: "column", sm: "row" }}

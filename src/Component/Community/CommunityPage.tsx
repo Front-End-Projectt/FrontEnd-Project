@@ -5,7 +5,6 @@ import {
   Heading,
   Input,
   Text,
-  useDisclosure,
   VStack,
 } from "@chakra-ui/react";
 import CommunityCard from "./CommunityCard";
@@ -16,18 +15,25 @@ interface communityCard {
   id: string;
   userId: string;
   userName: string;
+  avatar: string;
+  img: string;
   text: string;
 }
 
 function CommunityPage() {
   const [data, setData] = useState<any[]>([]);
+  const [cardToDelete, setCardToDelete] = useState("string");
   const [text, setText] = useState<string>("");
   const [id, setId] = useState<string>("");
   const api =
     "https://63e21e1c109336b6cbffdff0.mockapi.io/api/lap/CommunityCards";
   const userId = localStorage.getItem("userId");
   const userName = localStorage.getItem("userName");
-
+  const img =
+    userName == "محمد طه"
+      ? "https://unsplash.com/photos/dBiIcdxMWfE/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8MjF8fHBhcmVudHxlbnwwfHx8fDE2NzY1MDEzNTc&force=true&w=2400"
+      : "";
+  const avatar = userName === "محمد طه" ? "https://bit.ly/sage-adebayo" : "";
   // get data from api
   const getData = () => {
     axios.get(api).then((res) => {
@@ -37,7 +43,10 @@ function CommunityPage() {
     });
   };
 
-  useEffect(() => getData(), []);
+  useEffect(() => {
+    getData();
+    console.log("You got me");
+  }, []);
 
   // post data to api
   const PostCard = () => {
@@ -49,6 +58,8 @@ function CommunityPage() {
           id: id,
           userId: userId,
           userName: userName,
+          avatar: avatar,
+          img: img,
           text: text,
         })
         .then((res) => {
@@ -56,16 +67,16 @@ function CommunityPage() {
         });
       getData();
     } else {
-      alert("please login");
+      alert("Please login");
     }
   };
 
   const deletItem = (id: any) => {
-    console.log(id);
+    console.log("Delete");
     axios.delete(`${api}/${id}`).then((res) => {
       setData(data.filter((del) => del.id != id));
+      setCardToDelete("");
     });
-    console.log(data);
   };
   return (
     <Flex p={5} gap={7} flexDirection="column">
@@ -90,24 +101,16 @@ function CommunityPage() {
             <>
               {console.log(`Item: ${item.text}`)}
               <CommunityCard
+                key={item.id}
                 userId={`${userId}`}
                 text={item.text}
                 cardId={item.id}
                 userName={item.userName}
+                callBack={setCardToDelete}
+                avatar={item.avatar}
+                img={item.img}
               />
-              <Button
-                _hover={{
-                  backgroundColor: "rgba(250, 250, 250, 0.8)",
-                }}
-                variant="outline"
-                border={"none"}
-                color={"red"}
-                alignSelf={"end"}
-                onClick={() => {
-                  deletItem(item.id);
-                }}>
-                Delete
-              </Button>
+              {cardToDelete == item.id ? deletItem(cardToDelete) : null}
             </>
           ))}
         </VStack>
