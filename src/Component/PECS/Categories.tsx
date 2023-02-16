@@ -31,6 +31,18 @@ import { useNavigate } from 'react-router-dom';
     img: "https://cdn-icons-png.flaticon.com/512/3002/3002662.png",
     title: 'الضمائر',
   },
+  {
+    img:"https://cdn-icons-png.flaticon.com/512/8327/8327590.png",
+    title:'الافعال'
+  },
+  {
+    img:"https://cdn-icons-png.flaticon.com/512/1426/1426296.png",
+    title:'المشروبات'
+  },
+  {
+    img:"https://cdn-icons-png.flaticon.com/512/3300/3300144.png",
+    title:'المشاعر'
+  }
 ];
 
 
