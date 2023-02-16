@@ -17,7 +17,6 @@ import {
   useDisclosure,
   BoxProps,
   FlexProps,
-  Img,
   Menu,
   MenuButton,
   MenuDivider,
