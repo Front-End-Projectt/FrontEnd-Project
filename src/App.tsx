@@ -16,6 +16,7 @@ import HospitalsDetails from './Component/Hospitals/HospitalsDetails';
 import CommunityPage from './Component/Community/CommunityPage';
 import TrainingCenters from './Component/TrainingCenters/TrainingCenters';
 import TrainingDetails from './Component/TrainingCenters/TrainingDetails';
+import Team from './Component/Team/Team';
 
 function App() {
   return (
@@ -53,6 +54,10 @@ function App() {
         <Route
           path="DetailsTeacher/:id"
           element={<SideNav comp={undefined} children={<DetailsTeacher />} />}
+        ></Route>
+        <Route
+          path="Team"
+          element={<SideNav comp={undefined} children={<Team />} />}
         ></Route>
         <Route
           path="PECS"

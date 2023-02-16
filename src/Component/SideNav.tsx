@@ -43,6 +43,7 @@ import Profile from "./Authentication/Profile";
 import { BiBuildingHouse } from "react-icons/bi";
 import { CiHospital1, CiGlobe } from "react-icons/ci";
 import { BsCardText } from "react-icons/bs";
+import { RiTeamLine } from 'react-icons/Ri'
 
 import { Route, Link, useLocation } from "react-router-dom";
 import { ReactJSXElementAttributesProperty } from "@emotion/react/types/jsx-namespace";
@@ -60,6 +61,7 @@ const LinkItems: Array<LinkItemProps> = [
   { name: "معلمي الظل", icon: FiUsers, path: "Teachers" },
   { name: "بطاقات التعبير والتواصل", icon: BsCardText, path: "PECS/Categories" },
   { name: "المجتمع", icon: CiGlobe, path: "Community" },
+  { name: "فريق التطوير", icon: RiTeamLine, path: "Team" },
 ];
 const getLoc = localStorage.getItem("pathname")
 export default function SideNav({

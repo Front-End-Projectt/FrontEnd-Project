@@ -1,4 +1,7 @@
 import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
   Box,
   Button,
   Flex,
@@ -25,6 +28,7 @@ function CommunityPage() {
   const [cardToDelete, setCardToDelete] = useState("string");
   const [text, setText] = useState<string>("");
   const [id, setId] = useState<string>("");
+  const [showAlert, setShowAlert] = useState(false);
   const api =
     "https://63e21e1c109336b6cbffdff0.mockapi.io/api/lap/CommunityCards";
   const userId = localStorage.getItem("userId");
@@ -33,7 +37,7 @@ function CommunityPage() {
     userName == "محمد طه"
       ? "https://unsplash.com/photos/dBiIcdxMWfE/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8MjF8fHBhcmVudHxlbnwwfHx8fDE2NzY1MDEzNTc&force=true&w=2400"
       : "";
-  const avatar = userName === "محمد طه" ? "https://bit.ly/sage-adebayo" : "";
+  const avatar = userName === "محمد طه" ? "https://unsplash.com/photos/iFgRcqHznqg/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8MTZ8fHBlb3BsZXxlbnwwfHx8fDE2NzY0OTc4NjY&force=true&w=640" : "";
   // get data from api
   const getData = () => {
     axios.get(api).then((res) => {
@@ -47,6 +51,20 @@ function CommunityPage() {
     getData();
     console.log("You got me");
   }, []);
+
+  const customAlert = (des: string) => {
+    return showAlert ? (
+      <Flex justifyContent={'center'} w={{ base: "90%", md: "80%" }} alignSelf={'center'} zIndex={2} position={"fixed"}
+      bottom={'7em'}>
+      <Alert alignSelf={'center'}  status="info" borderRadius={10} w={{ base: "90%", md: "80%" }}>
+        <AlertIcon />
+        <AlertDescription fontSize={'md'}>{des}</AlertDescription>
+      </Alert>
+      </Flex>
+    ) : (
+      <span></span>
+    );
+  };
 
   // post data to api
   const PostCard = () => {
@@ -67,7 +85,7 @@ function CommunityPage() {
         });
       getData();
     } else {
-      alert("Please login");
+      setShowAlert(true);
     }
   };
 
@@ -95,7 +113,8 @@ function CommunityPage() {
         gap={3}
         alignItems="center"
         w={"100%"}
-        mb="2em">
+        mb="2em"
+      >
         <VStack w={"full"}>
           {data.map((item: communityCard) => (
             <>
@@ -115,15 +134,21 @@ function CommunityPage() {
           ))}
         </VStack>
       </Flex>
+      {showAlert ? customAlert('يجب عليك تسجيل الدخول'):null}
+
       <Box
         display="flex"
+        position={"sticky"}
+        bottom={5}
         p="1.5em"
         color="black"
         alignSelf={"center"}
+        w={{ base: "90%", md: "80%" }}
         backgroundColor={"#ffffff"}
         rounded="md"
         gap={2}
-        flexDirection="row">
+        flexDirection="row"
+      >
         {/* Comment to write */}
         <Input
           placeholder="أكتب هنا"
@@ -131,6 +156,7 @@ function CommunityPage() {
             setText(e.target.value);
           }}
         />
+
         <Button onClick={PostCard}>ارسال</Button>
       </Box>
     </Flex>
