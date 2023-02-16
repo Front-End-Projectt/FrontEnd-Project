@@ -31,7 +31,7 @@ function Teacher({ setInfo }: any) {
   return (
     <>
     <Box>
-      <Flex flexDir={"column"} gap={7} p={7} bg={"white"} borderRadius={10}>
+      <Flex m={5} flexDir={"column"} gap={7} p={7} bg={"white"} borderRadius={10}>
       <Heading as="h2">
         معلمي الظل
       </Heading>
@@ -58,7 +58,7 @@ function Teacher({ setInfo }: any) {
         <option value="الدمام">الدمام</option>
         <option value="الجبيل">الجبيل</option>
       </Select>
-      <SimpleGrid columns={{ base: 1, lg: 2, xl: 3 }} spacing={10}>
+      <SimpleGrid m={2.5}  columns={{ base: 1, lg: 2, xl: 3 }} spacing={10}>
         {arr.map((tech, i) => (
           <Center py={6} key={i}>
             <Box
