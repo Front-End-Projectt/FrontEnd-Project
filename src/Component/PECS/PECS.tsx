@@ -17,7 +17,7 @@ function PECS( ) {
   // let location = useLocation();
   // console.log(location.pathname); // /PECS/Categories
   const delDispatch = useDispatch()
-  const [flag, setFlag] = useBoolean()
+  const [fav, setFav] = useBoolean()
   // const store = useStore(cardsStore)
   const globalState = useSelector((state:any)=> state.data)
 
@@ -47,6 +47,10 @@ function PECS( ) {
     const action = {type: delPECS, payload: id}
     delDispatch(action)
     cardSelector
+  }
+  const favPECS = () =>{
+    setFav.toggle
+    
   }
 
 
@@ -85,11 +89,11 @@ function PECS( ) {
     <Box p={4}>
       <Box bg="white" borderRadius={10} border="2px #E2E8F0 solid">
         <Stack spacing={3} direction='row' p={6} overflow="auto" h={250} >
-              { cardSelector }
+              { cardSelector}
         </Stack>
         <Flex p={3} justifyContent={"end"} alignItems={"end"} >
-              <IconButton size="lg" variant="ghost" icon={<Icon as={HiVolumeUp} />} aria-label={''} _hover={{color:"#f00"}} onClick={()=>speechAllPECS()} />
-              <IconButton  size="lg" variant="ghost" icon={<StarIcon/>} aria-label={''} _hover={{color:"#FFD700"}}	/>
+              <IconButton size="lg" variant="ghost" icon={<Icon as={HiVolumeUp} />} aria-label={''} _hover={{color:"#2B6CB0"}} onClick={()=>speechAllPECS()} />
+              <IconButton  size="lg" variant="ghost" icon={<StarIcon/>} aria-label={''} _hover={{color:"#FFD700"}} color={fav ? "#FFD700": ""} 	onClick={setFav.toggle}/>
               <IconButton size="lg" variant="ghost" icon={<DeleteIcon/>} aria-label={''} _hover={{color:"#f00"}} onClick={()=>delAllPECS()} />
         </Flex>
       </Box>

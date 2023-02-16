@@ -21,10 +21,9 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<SignIn />}></Route>
 
         <Route
-          path="Home"
+          path="/"
           element={<SideNav comp={undefined} children={<HomePage />} />}
         ></Route>
         <Route

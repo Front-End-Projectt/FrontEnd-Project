@@ -54,7 +54,7 @@ interface LinkItemProps {
   icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: "الرئيسية ", icon: FiHome, path: "Home" },
+  { name: "الرئيسية ", icon: FiHome, path: "" },
   { name: "المستشفيات ", icon: CiHospital1, path: "Hospitals" },
   { name: "مراكز التدريب", icon: BiBuildingHouse, path: "Training" },
   { name: "معلمي الظل", icon: FiUsers, path: "Teachers" },
