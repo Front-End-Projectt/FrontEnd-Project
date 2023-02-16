@@ -11,7 +11,7 @@ import CardsData from "./CardsData"
 import CardProps from './Cards'
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
 import { jsx } from '@emotion/react'
-import HiVolumeUp from 'react-icons'
+import {HiVolumeUp} from 'react-icons/hi'
 
 function PECS( ) {
   // let location = useLocation();
@@ -59,7 +59,7 @@ function PECS( ) {
         return <></>
       }else{
         return state.data.map( (e:any, i:any) => 
-          <Card  w={100} key={i} minW={{base:100, md: 120}}  maxW='md' textAlign={"center"} borderRadius={30}  cursor={"pointer"} border="2px #E2E8F0 solid">
+          <Card  w={100} key={i} minW={120}  maxW='md' textAlign={"center"} borderRadius={30}  cursor={"pointer"} border="2px #E2E8F0 solid">
                   <CloseButton
                   alignSelf='flex-start'
                   position='relative'
@@ -84,16 +84,16 @@ function PECS( ) {
   return (
     <Box p={4}>
       <Box bg="white" borderRadius={10} border="2px #E2E8F0 solid">
-        <Stack spacing={8} direction='row' p={6} overflow="auto" >
+        <Stack spacing={3} direction='row' p={6} overflow="auto" h={250} >
               { cardSelector }
         </Stack>
         <Flex p={3} justifyContent={"end"} alignItems={"end"} >
-              <IconButton size="lg" variant="ghost" icon={<Icon />} aria-label={''} _hover={{color:"#f00"}} onClick={()=>speechAllPECS()} />
+              <IconButton size="lg" variant="ghost" icon={<Icon as={HiVolumeUp} />} aria-label={''} _hover={{color:"#f00"}} onClick={()=>speechAllPECS()} />
               <IconButton  size="lg" variant="ghost" icon={<StarIcon/>} aria-label={''} _hover={{color:"#FFD700"}}	/>
               <IconButton size="lg" variant="ghost" icon={<DeleteIcon/>} aria-label={''} _hover={{color:"#f00"}} onClick={()=>delAllPECS()} />
         </Flex>
       </Box>
-        <SimpleGrid pt={10} columns={[2, 3, 4, 5]} spacing='40px'>
+        <SimpleGrid pt={10} columns={[2, 3, 3, 4]} spacing='40px'>
 
         <Outlet/>
 

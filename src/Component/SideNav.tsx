@@ -58,7 +58,7 @@ const LinkItems: Array<LinkItemProps> = [
   { name: "المستشفيات ", icon: CiHospital1, path: "Hospitals" },
   { name: "مراكز التدريب", icon: BiBuildingHouse, path: "Training" },
   { name: "معلمي الظل", icon: FiUsers, path: "Teachers" },
-  { name: "بطاقات الطلب", icon: BsCardText, path: "PECS/Categories" },
+  { name: "بطاقات التعبير والتواصل", icon: BsCardText, path: "PECS/Categories" },
   { name: "المجتمع", icon: CiGlobe, path: "Community" },
 ];
 const getLoc = localStorage.getItem("pathname")
