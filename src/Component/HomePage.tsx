@@ -116,7 +116,7 @@ function HomePage() {
         نساعد الذين يعانون من طيف التوحد. نوفر العديد من المصادر التعليمية والاجتماعية التي تساعد الذين يعانون من طيف التوحد في التعامل مع مشكلاتهم. نوفر مجموعة من الأدوات المختلفة التي ترشد مصابي طيف التوحد. بالإضافة إلى ذلك. نقدم أيضا الوصول إلى المزيد من المجتمعات الاجتماعية والتعليمية التي تساعد الذين يعانون من طيف التوحد
         </Text>
         <Stack spacing={6} direction={'row'}>
-          <Button w={140} 
+          <Button w={{base: 90 , sm:140}} 
             rounded={'full'}
             px={6}
             colorScheme={'orange'}
@@ -124,7 +124,7 @@ function HomePage() {
             _hover={{ bg: 'rgba(0, 135, 85, 0.9)' }}>
             البدء
           </Button>
-          <Button w={140} rounded={'full'} px={6}>
+          <Button w={{base: 90 , sm:140}} rounded={'full'} px={6}>
             المزيد
           </Button>
         </Stack>
@@ -146,7 +146,7 @@ function HomePage() {
         fontWeight={'bold'}>
         ماذا نقدم؟
       </chakra.h1>
-<Box p={5} border={'1px'} borderRadius={"50px"}  maxW="7xl" mx={'auto'} m={5} px={{ base: 2, sm: 12, md: 17 }}  boxShadow='md'  rounded='md' >
+<Box p={5} border={'1px'} borderRadius={"50px"}  maxW="7xl" mx={'auto'} px={{ base: 2, sm: 12, md: 17 }}  boxShadow='md'  rounded='md' >
       <SimpleGrid  columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }} pb={10}>
  
 

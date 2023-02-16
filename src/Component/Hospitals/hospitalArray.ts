@@ -12,13 +12,13 @@ export default hospArr = [
       {
         name: 'محمد',
         imgUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
+          'https://cdn-icons-png.flaticon.com/512/4128/4128176.png',
         jobTitle: 'دكتور نفسي',
       },
       {
         name: 'نوره',
         imgUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
+          'https://cdn-icons-png.flaticon.com/512/4323/4323004.png',
         jobTitle: 'دكتور نفسي',
       },
     ],
@@ -35,13 +35,13 @@ export default hospArr = [
       {
         name: 'خالد',
         imgUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
+          'https://cdn-icons-png.flaticon.com/512/4128/4128176.png',
         jobTitle: 'دكتور نفسي',
       },
       {
         name: 'احمد',
         imgUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
+          'https://cdn-icons-png.flaticon.com/512/4128/4128176.png',
         jobTitle: 'دكتور نفسي',
       },
     ],
@@ -58,13 +58,13 @@ export default hospArr = [
       {
         name: 'سارة',
         imgUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
+          'https://cdn-icons-png.flaticon.com/512/4323/4323004.png',
         jobTitle: 'دكتور نفسي',
       },
       {
         name: 'عبدالرحمن',
         imgUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
+          'https://cdn-icons-png.flaticon.com/512/4128/4128176.png',
         jobTitle: 'دكتور نفسي',
       },
     ],
@@ -81,13 +81,13 @@ export default hospArr = [
       {
         name: 'محمود',
         imgUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
+          'https://cdn-icons-png.flaticon.com/512/4128/4128176.png',
         jobTitle: 'دكتور نفسي',
       },
       {
         name: 'صالح',
         imgUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
+          'https://cdn-icons-png.flaticon.com/512/4128/4128176.png',
         jobTitle: 'دكتور نفسي',
       },
     ],
@@ -104,13 +104,13 @@ export default hospArr = [
       {
         name: 'شهد',
         imgUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
+          'https://cdn-icons-png.flaticon.com/512/4323/4323004.png',
         jobTitle: 'دكتور نفسي',
       },
       {
         name: 'ايمن',
         imgUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
+          'https://cdn-icons-png.flaticon.com/512/4128/4128176.png',
         jobTitle: 'دكتور نفسي',
       },
     ],
@@ -127,13 +127,13 @@ export default hospArr = [
       {
         name: 'فيصل',
         imgUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
+          'https://cdn-icons-png.flaticon.com/512/4128/4128176.png',
         jobTitle: 'دكتور نفسي',
       },
       {
         name: 'ندى',
         imgUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8DffXYqWQgkXThPePQXR7gI6djPT5inDuy9i4x-NT&s',
+          'https://cdn-icons-png.flaticon.com/512/4323/4323004.png',
         jobTitle: 'دكتور نفسي',
       },
     ],

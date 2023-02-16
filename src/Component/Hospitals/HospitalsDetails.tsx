@@ -22,11 +22,12 @@ function HospitalsDetails() {
   let i = Number((id as unknown as number) - 1);
 
   return (
-    <>
+    <><Box p={5}>
       <Flex
         flexDirection={{base:'column' , lg:'row'}}
         justifyContent={'space-around'}
         p={8}
+        bg={'white'}
         gap={{base:10 , lg:0}}
         width="full"
         height="full"
@@ -72,7 +73,6 @@ function HospitalsDetails() {
         </VStack>
       </Flex>
       <Box
-        shadow="md"
         rounded="lg"
         bg="#edf3f8"
         _dark={{ bg: 'gray.800' }}
@@ -116,6 +116,7 @@ function HospitalsDetails() {
         ))}
         </Flex>
         
+      </Box>
       </Box>
     </>
   );

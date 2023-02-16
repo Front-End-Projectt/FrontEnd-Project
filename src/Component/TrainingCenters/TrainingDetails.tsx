@@ -23,11 +23,13 @@ function TrainingDetails() {
 
   return (
     <>
+    <Box p={5}>
       <Flex
         flexDirection={{ base: "column", lg: "row" }}
         justifyContent={"space-around"}
         gridColumn="span 8"
         p={8}
+        bg={'white'}
         gap={{ base: 10, lg: 0 }}
         width="full"
         height="full"
@@ -79,42 +81,43 @@ function TrainingDetails() {
         alignItems="center"
         justifyContent="center"
       >
-        {/* <Flex
-          flexDirection={'row'}
-          justifyContent={'center'}
-          wrap={'wrap'}
-          py={6}
+      </Box>
+      <Flex flexDirection={'row'} justifyContent={'center'} wrap={'wrap'}  py={6} key={i} >
+        {trainArr[i].doctors.map((value , i) => (
+        <Box 
           key={i}
-        >
-          {trainArr[i].doctors.map((value, i) => (
-            <Box
-              key={i}
-              maxW={'320px'}
-              w={'full'}
-              bg={useColorModeValue('white', 'gray.900')}
-              boxShadow={'xl'}
-              rounded={'lg'}
-              m={3}
-              p={6}
-              textAlign={'center'}
-            >
-              <Avatar size={'xl'} src={value.imgUrl} mb={4} pos={'relative'} />
-              <Heading fontSize={'2xl'} fontFamily={'body'}>
-                {value.name}
-              </Heading>
-              <Text fontWeight={600} color={'gray.500'} mb={4}></Text>
-              <Text
-                textAlign={'center'}
-                color={useColorModeValue('gray.700', 'gray.400')}
-                px={3}
-              >
-                {value.jobTitle}
-              </Text>
-
-              <StarRating/>
-            </Box>
-          ))}
-        </Flex> */}
+          maxW={'320px'}
+          w={'full'}
+          bg={useColorModeValue('white', 'gray.900')}
+          boxShadow={'xl'}
+          rounded={'lg'}
+          m={3}
+          p={6}
+          textAlign={'center'}>
+          <Avatar
+            size={'xl'}
+            src={
+              value.imgUrl
+            }
+            mb={4}
+            pos={'relative'}
+  
+          />
+          <Heading fontSize={'2xl'} fontFamily={'body'}>
+            {value.name}
+          </Heading>
+          <Text fontWeight={600} color={'gray.500'} mb={4}>
+            
+          </Text>
+          <Text
+            textAlign={'center'}
+            color={useColorModeValue('gray.700', 'gray.400')}
+            px={3}>
+            {value.jobTitle}
+          </Text>          
+        </Box>
+        ))}
+        </Flex>
       </Box>
     </>
   );
