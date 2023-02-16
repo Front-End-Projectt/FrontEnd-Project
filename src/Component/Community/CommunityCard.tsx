@@ -62,6 +62,7 @@ function CommunityCard(props: communityCard) {
   const { isOpen, onToggle } = useDisclosure();
   const [comment, setComment] = useState<string>("");
   const [data, setData] = useState<any[]>([]);
+  const [showAlert , setShowAlert] = useState(false)
   const api = "https://63e750caac3920ad5bdc24a6.mockapi.io/Comment";
   const userName = localStorage.getItem("userName");
   const userId = props.userId;
@@ -78,6 +79,19 @@ function CommunityCard(props: communityCard) {
       console.log(data);
     });
   };
+
+  const customAlert = (des:string) => {    
+    return (
+      showAlert ? (
+        <Alert   status="info" w={'100%'} borderRadius={10}>
+        <AlertIcon />
+        <AlertDescription fontSize={'md'}>{des}</AlertDescription>
+      </Alert>
+      ): (
+        <span></span>
+      )
+    ) 
+  }
 
   useEffect(() => getData(), []);
 
@@ -97,7 +111,7 @@ function CommunityCard(props: communityCard) {
           getData();
         });
     } else {
-      // setShowAlert(true)
+      setShowAlert(true)
       // alert("please login");
     }
   };
@@ -269,6 +283,8 @@ function CommunityCard(props: communityCard) {
                 </>
               ))}
             </VStack>
+            {showAlert ? customAlert('يجب عليك تسجيل الدخول'):null}
+            
             <Box
               display="flex"
               p="1.5em"
@@ -286,9 +302,9 @@ function CommunityCard(props: communityCard) {
                   setComment(e.target.value);
                 }}
               />
-
               <Button onClick={PostData}>تعليق</Button>
             </Box>
+
           </Collapse>
         </Flex>
       </CardFooter>
