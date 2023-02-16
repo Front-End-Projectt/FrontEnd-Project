@@ -24,6 +24,7 @@ import {
   MenuItem,
   MenuList,
   Button,
+  Img,
 } from "@chakra-ui/react";
 import {
   FiTrendingUp,
@@ -45,6 +46,7 @@ import Profile from "./Authentication/Profile";
 import { BiBuildingHouse } from "react-icons/bi";
 import { CiHospital1, CiGlobe } from "react-icons/ci";
 import { BsCardText } from "react-icons/bs";
+import { RiTeamLine } from 'react-icons/Ri'
 
 import { Route, Link, useLocation } from "react-router-dom";
 import { ReactJSXElementAttributesProperty } from "@emotion/react/types/jsx-namespace";
@@ -57,12 +59,13 @@ interface LinkItemProps {
   icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: "الرئيسية ", icon: FiHome, path: "Home" },
+  { name: "الرئيسية ", icon: FiHome, path: "" },
   { name: "المستشفيات ", icon: CiHospital1, path: "Hospitals" },
   { name: "مراكز التدريب", icon: BiBuildingHouse, path: "Training" },
   { name: "معلمي الظل", icon: FiUsers, path: "Teachers" },
-  { name: "بطاقات الطلب", icon: BsCardText, path: "PECS/Categories" },
+  { name: "بطاقات التعبير والتواصل", icon: BsCardText, path: "PECS/Categories" },
   { name: "المجتمع", icon: CiGlobe, path: "Community" },
+  { name: "فريق التطوير", icon: RiTeamLine, path: "Team" },
 ];
 const getLoc = localStorage.getItem("pathname")
 export default function SideNav({
@@ -127,9 +130,13 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       h="full"
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+        <Flex alignItems={'center'}>
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
           <Image w={{ base: "5rem", sm: "8rem" }}  src={logo}></Image>
         </Text>
+        <Img width={50} src="https://cdn.discordapp.com/attachments/1067476928631677008/1075711578630008872/logo3.png"/>
+
+        </Flex>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link, i) => (
@@ -234,15 +241,22 @@ const MobileNav = (
         aria-label="open menu"
         icon={<FiMenu />}
       />
-      <Text
+
+         <Flex alignItems={'center'}>
+         <Text
         display={{ base: "flex", md: "none" }}
         fontSize="2xl"
         fontFamily="monospace"
         fontWeight="bold"
         
       >
+
         <Image w={{ base: "5rem", sm: "8rem" }}  src={logo}></Image>
+
       </Text>
+        <Img width={50}  display={{ base: "flex", md: "none" }} src="https://cdn.discordapp.com/attachments/1067476928631677008/1075711578630008872/logo3.png"/>
+
+        </Flex>
       {width > 474 ? Greeting() : null}
     </Flex>
   );

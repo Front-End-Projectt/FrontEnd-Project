@@ -25,6 +25,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import CardsData from './CardsData';
 
+
   type Categ = {
     data:{
         img: string,
@@ -49,17 +50,17 @@ function Cards() {
             }
         }
         speechSynthesis.speak(speech)
-        
+
         
         const action = {type: addPECS, payload: CardsData[i]}
         cardDispatch(action)
         navigate("/PECS/Categories")
     }
 
+    const categ = localStorage.getItem('cate')
     return (
         <>
-            {CardsData.map((e,i) => 
-
+            {CardsData.map((e,i) =>e.cates === categ ?
             <Card key={e.title}  maxW='sm' textAlign={"center"} borderRadius={30}  cursor={"pointer"} onClick={()=>addPECS(i)}>
                 <CardBody>
                     <Image
@@ -68,7 +69,7 @@ function Cards() {
                     />
                     <Heading mt='6' size='md'>{e.title}</Heading>
                 </CardBody>
-            </Card>
+            </Card>: ""
     )}
         </>
     );

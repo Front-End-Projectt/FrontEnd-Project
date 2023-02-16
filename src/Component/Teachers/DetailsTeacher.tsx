@@ -5,6 +5,8 @@ import techArr from './ArrayTeacher';
 import StarRating from './StarRating';
 import { HStack, Image } from "@chakra-ui/react";
 import { FaEnvelope, FaMapPin, FaSuitcase } from "react-icons/fa";
+import { HiBadgeCheck } from 'react-icons/hi'
+import {FcKindle} from 'react-icons/fc'
 import { render } from "react-dom";
  
 
@@ -104,6 +106,14 @@ function DetailsTeacher() {
           <HStack spacing={3} color="gray.700" _dark={{ color: "gray.200" }}>
             <FaEnvelope size={20} />
             <Text fontSize="lg">{techArr[i].email}</Text>
+          </HStack>
+          <HStack spacing={3} color="gray.700" _dark={{ color: "gray.200" }}>
+            <HiBadgeCheck size={20} />
+            <Text fontSize="lg">سنوات الخبرة: {techArr[i].experience}</Text>
+          </HStack>
+          <HStack spacing={3} color="gray.700" _dark={{ color: "gray.200" }}>
+            <FcKindle size={20} />
+            <Text fontSize="lg">نوع التوحد الذي تم التعامل معه: {techArr[i].type}</Text>
           </HStack>
         </Box>
       </Flex>

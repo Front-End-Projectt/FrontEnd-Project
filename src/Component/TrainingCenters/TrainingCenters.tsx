@@ -13,18 +13,19 @@ import {
   useColorModeValue,
   Center,
   Avatar,
-} from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import StarRating from "../Teachers/StarRating";
-import trainArr from "./TrainingCentersArray";
+  Container,
+} from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import StarRating from '../Teachers/StarRating';
+import trainArr from './TrainingCentersArray';
 function TrainingCenters() {
   const navigate = useNavigate();
 
   const [arr, setArr] = useState(trainArr);
 
   const filter = (city: string) => {
-    if (city === "") {
+    if (city === '') {
       setArr(trainArr);
     } else {
       setArr(trainArr.filter((e) => e.city === city));
@@ -33,27 +34,41 @@ function TrainingCenters() {
 
   return (
     <Box p={5}>
-      <Flex flexDir={"column"} bg={"white"} p={7} borderRadius={10} gap={7}>
-        <Heading>مراكز التدريب</Heading>
-        <Text>
-          مراكز التدريب هي وحدات تعليمية وتربوية تحتوي على مجموعة من الخدمات
-          التي تخدم الأطفال ذوي الاحتياجات الخاصة، فضلاً عن الأطفال الذين لا
-          يعانون من وجود حالات معينة. المراكز تطور الجوانب الدفاعية والاجتماعية
-          للأطفال، وتوفر الحماية اللازمة للأطفال في جميع المراحل السنية،
-          وبالإضافة إلى ذلك، يوفر هذا النوع من مراكز التدريب برامج الحضور الشهري المشترك،
-          وبرامج خدمة الأسرة، وخدمات المساعدة التعليمية، وخدمات التغذية،
-          والرعاية الصحية، والتكيف، والخدمات التنظيمية والشؤون القانونية، و
-          غيرها من الخدمات.
-        </Text>
-      </Flex>
-
+      <Box zIndex={-100} bg={'white'} m={5} borderRadius={10}>
+        <Container maxW={'5xl'}>
+          <Stack
+            textAlign={'center'}
+            align={'center'}
+            spacing={{ base: 8, md: 10 }}
+            py={{ base: 20, md: 28 }}
+          >
+            <Heading
+              fontWeight={600}
+              fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
+              lineHeight={'110%'}
+            >
+              مراكز التدريب
+            </Heading>
+            <Text color={'gray.500'} maxW={'3xl'}>
+              مراكز التدريب هي وحدات تعليمية وتربوية تحتوي على مجموعة من الخدمات
+              التي تخدم الأطفال ذوي الاحتياجات الخاصة، فضلاً عن الأطفال الذين لا
+              يعانون من وجود حالات معينة. المراكز تطور الجوانب الدفاعية
+              والاجتماعية للأطفال، وتوفر الحماية اللازمة للأطفال في جميع المراحل
+              السنية، وبالإضافة إلى ذلك، يوفر هذا النوع من مراكز التدريب برامج
+              الحضور الشهري المشترك، وبرامج خدمة الأسرة، وخدمات المساعدة
+              التعليمية، وخدمات التغذية، والرعاية الصحية، والتكيف، والخدمات
+              التنظيمية والشؤون القانونية، و غيرها من الخدمات.
+            </Text>
+          </Stack>
+        </Container>
+      </Box>
       <Select
-        bg={"white"}
+        bg={'white'}
         pr={3}
-        _hover={{ cursor: "pointer" }}
+        _hover={{ cursor: 'pointer' }}
         placeholder="المدينة"
         w={200}
-        size={"md"}
+        size={'md'}
         m={5}
         onChange={(e) => filter(e.target.value)}
       >
@@ -62,13 +77,12 @@ function TrainingCenters() {
         <option value="الدمام">الدمام</option>
         <option value="الخرج">الخرج</option>
         <option value="جدة">جدة</option>
-
       </Select>
 
       <Box>
         <SimpleGrid
           columns={{ base: 1, lg: 2, xl: 3 }}
-          justifyContent={"center"}
+          justifyContent={'center'}
           spacing={10}
           pr={30}
           pl={30}
@@ -76,48 +90,48 @@ function TrainingCenters() {
           {arr.map((value) => (
             <Box
               key={value.title}
-              display={"flex"}
-              justifyContent={"space-between"}
-              flexDirection={"column"}
-              maxW={"445px"}
-              w={"full"}
-              bg={useColorModeValue("white", "gray.900")}
-              boxShadow={"lg"}
-              rounded={"md"}
+              display={'flex'}
+              justifyContent={'space-between'}
+              flexDirection={'column'}
+              maxW={'445px'}
+              w={'full'}
+              bg={useColorModeValue('white', 'gray.900')}
+              boxShadow={'lg'}
+              rounded={'md'}
               p={6}
-              overflow={"hidden"}
+              overflow={'hidden'}
             >
-              <Heading fontSize={{ base: "3xl", md: "xl" }} mb={5}>
+              <Heading fontSize={{ base: '3xl', md: 'xl' }} mb={5}>
                 {value.title}
               </Heading>
               <Stack>
                 <Text
-                  overflow={"hidden"}
-                  whiteSpace={"nowrap"}
-                  textOverflow={"ellipsis"}
-                  color={"gray.500"}
+                  overflow={'hidden'}
+                  whiteSpace={'nowrap'}
+                  textOverflow={'ellipsis'}
+                  color={'gray.500'}
                 >
                   {value.description}
                 </Text>
               </Stack>
               <Flex
-                flexDirection={"row"}
-                justifyContent={"space-between"}
-                alignItems={"flex-end"}
+                flexDirection={'row'}
+                justifyContent={'space-between'}
+                alignItems={'flex-end'}
               >
                 <Badge
                   px={2}
                   py={1}
-                  bg={useColorModeValue("gray.50", "gray.800")}
-                  fontWeight={"400"}
+                  bg={useColorModeValue('gray.50', 'gray.800')}
+                  fontWeight={'400'}
                 >
                   #{value.city}
                 </Badge>
                 <Button
                   _hover={{
-                    backgroundColor: "rgba(0, 135, 85, 0.7)",
-                    color: "#ffffff",
-                    transition: "150ms",
+                    backgroundColor: 'rgba(0, 135, 85, 0.7)',
+                    color: '#ffffff',
+                    transition: '150ms',
                   }}
                   variant="outline"
                   mt={5}

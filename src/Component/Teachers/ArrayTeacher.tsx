@@ -8,15 +8,18 @@ export default techArr =[
     des:"لدي الكفاءة في التعامل مع ألاطفال المصابين بالتوحد بأساليب مختلفة",
     region:"الرياض",
     email: "ahmed@buehner.com",
-    backgroundImage: 'https://images.unsplash.com/photo-1629470937900-f9ef0f2a8086?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGNsYXNzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60'
-    },
+    experience:3,
+    type:'متلازمة اسبرجر'
+},
     {
         id:2,
     img: "https://cdn-icons-png.flaticon.com/512/4323/4323004.png",
     name: "ساره",
     des:"لدي الكفاءة في التعامل مع الأطفال المصابين بالتوحد بأساليب مختلفة",
     email: "sarah@buehner.com",
-    region:"الجبيل"
+    region:"الجبيل",
+    experience:2,
+    type:'التوحد الكلاسيكي'
     },
     {
         id:3,
@@ -24,7 +27,9 @@ export default techArr =[
     name: "سالم",
     des:"لدي الكفاءة في التعامل مع الأطفال المصابين بالتوحد بأساليب مختلفة",
     email: "salm@buehner.com",
-    region:"الدمام"
+    region:"الدمام",
+    experience:5,
+    type:'التوحد الكلاسيكي'
     },
     {
         id:4,
@@ -32,7 +37,9 @@ export default techArr =[
     name: "فهد",
     des:"لدي الكفاءة في التعامل مع الأطفال المصابين بالتوحد بأساليب مختلفة",
     email: "fahad@buehner.com",
-    region:"القصيم"
+    region:"القصيم",
+    experience:3,
+    type:'متلازمة هيلر'
     },
     {
         id:5,
@@ -40,7 +47,9 @@ export default techArr =[
     name: "خالد",
     des:"لدي الكفاءة في التعامل مع ألاطفال المصابين بالتوحد بأساليب مختلفة",
     email: "khaled@buehner.com",
-    region:"الرياض"
+    region:"الرياض",
+    experience:1,
+    type:'متلازمة هيلر'
     },
     {
         id:6,
@@ -48,6 +57,8 @@ export default techArr =[
     name: "نوره",
     des:"لدي الكفاءة في التعامل مع ألاطفال المصابين بالتوحد بأساليب مختلفة",
     email: "nora@buehner.com",
-    region:"المجمعة"
+    region:"المجمعة",
+    experience:4,
+    type:'التوحد غير النمطي'
     }
   ]

@@ -26,6 +26,7 @@ import {
   StatNumber,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { useNavigate } from "react-router";
 
 
 
@@ -91,6 +92,7 @@ const Feature = ({ title, text, icon }: FeatureProps) => {
 {/************* End Features ***********/}
 
 function HomePage() {
+  const navigate = useNavigate();
   
   return(
    <>
@@ -103,20 +105,29 @@ function HomePage() {
         align={'center'}
         spacing={{ base: 8, md: 10 }}
         py={{ base: 20, md: 28 }}>
+          
         <Heading
           fontWeight={600}
           fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
           lineHeight={'110%'}>
+
           التوحّد ليس بإعاقة, {' '}
           <Text as={'span'} color={'rgba(0, 135, 85, 0.7)'}>
           إنما قدرة مختلفة  
                   </Text>
+
         </Heading>
         <Text color={'gray.500'} maxW={'3xl'}>
         نساعد الذين يعانون من طيف التوحد. نوفر العديد من المصادر التعليمية والاجتماعية التي تساعد الذين يعانون من طيف التوحد في التعامل مع مشكلاتهم. نوفر مجموعة من الأدوات المختلفة التي ترشد مصابي طيف التوحد. بالإضافة إلى ذلك. نقدم أيضا الوصول إلى المزيد من المجتمعات الاجتماعية والتعليمية التي تساعد الذين يعانون من طيف التوحد
         </Text>
         <Stack spacing={6} direction={'row'}>
+
+          <Button
+          onClick={()=> navigate("/Hospitals")}
+           w={{base: 90 , sm:140}} 
+
           <Button w={139} 
+
             rounded={'full'}
             px={6}
             colorScheme={'orange'}
@@ -124,7 +135,7 @@ function HomePage() {
             _hover={{ bg: 'rgba(0, 135, 85, 0.9)' }} >
             البدء
           </Button>
-          <Button w={140} rounded={'full'} px={6}>
+          <Button    onClick={()=> navigate("/Team")} w={{base: 90 , sm:140}} rounded={'full'} px={6}>
             المزيد
           </Button>
         </Stack>
@@ -146,7 +157,7 @@ function HomePage() {
         fontWeight={'bold'}>
         ماذا نقدم؟
       </chakra.h1>
-<Box p={5} border={'1px'} borderRadius={"50px"}  maxW="7xl" mx={'auto'} m={5} px={{ base: 2, sm: 12, md: 17 }}  boxShadow='md'  rounded='md' >
+<Box p={5} border={'1px'} borderRadius={"50px"}  maxW="7xl" mx={'auto'} px={{ base: 2, sm: 12, md: 17 }}  boxShadow='md'  rounded='md' >
       <SimpleGrid  columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }} pb={10}>
  
 
