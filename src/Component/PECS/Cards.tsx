@@ -38,9 +38,18 @@ function Cards() {
     const cardDispatch = useDispatch()
     const navigate = useNavigate();
 
-
     const addPECS = (i:number)=>{
-        // CardsData[i] <Cards/>
+        
+        const text = CardsData[i].title;
+        const speech = new SpeechSynthesisUtterance(text)
+        speech.rate = 2.5
+        for (let voice of speechSynthesis.getVoices()) {
+            if(voice.lang == "ar-SA"){
+                speech.voice = voice
+            }
+        }
+        speechSynthesis.speak(speech)
+        
         
         const action = {type: addPECS, payload: CardsData[i]}
         cardDispatch(action)

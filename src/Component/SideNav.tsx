@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from 'react';
 
 import {
   IconButton,
@@ -32,7 +32,6 @@ import {
   FiChevronDown,
 } from "react-icons/fi";
 
-import Diagnosis from "./Diagnosis";
 import Register from "./Authentication/Register";
 
 import { FiHome, FiMenu, FiUsers } from "react-icons/fi";
@@ -45,7 +44,7 @@ import { BiBuildingHouse } from "react-icons/bi";
 import { CiHospital1, CiGlobe } from "react-icons/ci";
 import { BsCardText } from "react-icons/bs";
 
-import { Route, Link } from "react-router-dom";
+import { Route, Link, useLocation } from "react-router-dom";
 import { ReactJSXElementAttributesProperty } from "@emotion/react/types/jsx-namespace";
 import { ValueTarget } from "framer-motion";
 
@@ -57,12 +56,12 @@ interface LinkItemProps {
 const LinkItems: Array<LinkItemProps> = [
   { name: "الرئيسية ", icon: FiHome, path: "Home" },
   { name: "المستشفيات ", icon: CiHospital1, path: "Hospitals" },
-  { name: "مراكز التدريب", icon: BiBuildingHouse, path: "Diagnosis" },
+  { name: "مراكز التدريب", icon: BiBuildingHouse, path: "Training" },
   { name: "معلمي الظل", icon: FiUsers, path: "Teachers" },
   { name: "بطاقات الطلب", icon: BsCardText, path: "PECS/Categories" },
   { name: "المجتمع", icon: CiGlobe, path: "Community" },
 ];
-
+const getLoc = localStorage.getItem("pathname")
 export default function SideNav({
   children,
   comp,
@@ -72,6 +71,8 @@ export default function SideNav({
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  let location = useLocation();
+  const setLoc = localStorage.setItem("pathname", location.pathname)
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
       <SidebarContent
@@ -90,7 +91,6 @@ export default function SideNav({
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
       <Box mr={{ base: 0, md: 60 }} >
         {children}
@@ -104,6 +104,15 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+  const [width, setWidth] = useState(window.innerWidth);
+  const updateDimensions = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
   return (
     <Box
       transition="3s ease"
@@ -116,12 +125,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+          طيف
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link, i) => (
-        <NavItem
+        <NavItem onClick={onClose}
           _hover={{
             backgroundColor: "rgba(0, 135, 85, 0.7)",
             color: "#ffffff",
@@ -134,6 +143,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           {link.name}
         </NavItem>
       ))}
+      {width < 474 ? Greeting() : null}
     </Box>
   );
 };
@@ -146,8 +156,9 @@ interface NavItemProps extends FlexProps {
 // Nav item link
 const NavItem = ({ icon, children, value, ...rest }: NavItemProps) => {
   return (
-    <Link to={`/${value}`} style={{ textDecoration: "none" }}>
+    <Link    to={`/${value}`} style={{ textDecoration: "none" }}>
       <Flex
+      
         align="center"
         p="4"
         mx="4"
@@ -177,7 +188,7 @@ const NavItem = ({ icon, children, value, ...rest }: NavItemProps) => {
 
 interface MobileProps extends FlexProps {
   onOpen: () => void;
-}
+} 
 function Greeting() {
   const isLoggedIn = localStorage.isLogIn;
   if (isLoggedIn == "false") {
@@ -188,10 +199,22 @@ function Greeting() {
 }
 const MobileNav = (
   { onOpen, ...rest }: MobileProps,
+
   { comp }: { comp: ReactNode }
 ) => {
+
+  const [width, setWidth] = useState(window.innerWidth);
+  const updateDimensions = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
   return (
     <Flex
+    zIndex={-1000}
       mr={{ base: 0, md: 60 }}
       px={{ base: 4, md: 4 }}
       height="20"
@@ -208,16 +231,16 @@ const MobileNav = (
         aria-label="open menu"
         icon={<FiMenu />}
       />
-
       <Text
         display={{ base: "flex", md: "none" }}
         fontSize="2xl"
         fontFamily="monospace"
-        fontWeight="bold">
-        Logo
+        fontWeight="bold"
+        
+      >
+        طيف
       </Text>
-
-      {Greeting()}
+      {width > 474 ? Greeting() : null}
     </Flex>
   );
 };

@@ -15,29 +15,22 @@ import techArr from "./ArrayTeacher";
 import { useNavigate, Link, useParams, useLocation } from "react-router-dom";
 import StarRating from "./StarRating";
 import App from '../../App.css';
+
 function Teacher({ setInfo }: any) {
   const navigate = useNavigate();
 
   const [arr, setArr] = React.useState(techArr);
   const filter = (region: string) => {
-    if (region === "الرياض") {
-      setArr(techArr.filter((e) => e.region === "الرياض"));
-    } else if (region === "المجمعة") {
-      setArr(techArr.filter((e) => e.region === "المجمعة"));
-    } else if (region === "القصيم") {
-      setArr(techArr.filter((e) => e.region === "القصيم"));
-    } else if (region === "الجبيل") {
-      setArr(techArr.filter((e) => e.region === "الجبيل"));
-    } else if (region === "الدمام") {
-      setArr(techArr.filter((e) => e.region === "الدمام"));
-    } else {
-      setArr(techArr);
+    if(region === '') {
+      setArr(techArr)
+    } else{
+      setArr(techArr.filter((e) => e.region === region))
     }
   };
 
   return (
     <>
-    <Box m={5}>
+    <Box>
       <Flex flexDir={"column"} gap={7} p={7} bg={"white"} borderRadius={10}>
       <Heading as="h2">
         معلمي الظل
@@ -65,7 +58,7 @@ function Teacher({ setInfo }: any) {
         <option value="الدمام">الدمام</option>
         <option value="الجبيل">الجبيل</option>
       </Select>
-      <SimpleGrid columns={{ base: 1, md: 3, sm: 2 }} spacing={10}>
+      <SimpleGrid columns={{ base: 1, lg: 2, xl: 3 }} spacing={10}>
         {arr.map((tech, i) => (
           <Center py={6} key={i}>
             <Box

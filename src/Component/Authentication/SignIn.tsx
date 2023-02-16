@@ -26,6 +26,8 @@ export default function SimpleCard() {
 
   // localStorage.setItem("isLogIn", userState);
   const signIn = () => {
+    const getLoc = localStorage.getItem("pathname")
+
     axios.get(api).then((usersList) => {
       for (let i = 0; i <= api.length; i++) {
         const user = usersList.data[i];
@@ -38,7 +40,7 @@ export default function SimpleCard() {
           localStorage.setItem("isLogIn", "true");
           localStorage.setItem("userId", Id);
           localStorage.setItem("userName", userName);
-          navigate("/Home");
+          navigate(`${getLoc}`);
           break;
         } else {
           console.log("No account");
@@ -55,7 +57,6 @@ export default function SimpleCard() {
       bg={useColorModeValue("gray.50", "gray.800")}>
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
-          <Heading fontSize={"4xl"}>تسجيل الدخول إلى حسابك</Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
             {/* to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️ */}
           </Text>
@@ -66,6 +67,7 @@ export default function SimpleCard() {
           boxShadow={"lg"}
           p={8}>
           <Stack spacing={4}>
+          <Heading mb={12} fontSize={"3xl"}>تسجيل الدخول إلى حسابك</Heading>
             <FormControl id="email">
               <FormLabel>البريد الالكتروني</FormLabel>
               <Input
@@ -100,6 +102,9 @@ export default function SimpleCard() {
                 تسجيل الدخول
               </Button>
             </Stack>
+            <Text align={'center'}>
+                ليس لديك حساب؟ <Link href='/Register' color={'blue.400'}>تسجيل </Link>
+                </Text>
           </Stack>
         </Box>
       </Stack>
