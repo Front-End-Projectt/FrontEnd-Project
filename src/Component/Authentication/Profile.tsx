@@ -59,10 +59,10 @@ function Profile() {
         <MenuList
           bg={useColorModeValue("white", "gray.900")}
           borderColor={useColorModeValue("gray.200", "gray.700")}>
-          <MenuItem>Profile</MenuItem>
-          <MenuItem>Settings</MenuItem>
+          <MenuItem>الحساب</MenuItem>
+          <MenuItem>الاعدادات</MenuItem>
           <MenuDivider />
-          <MenuItem onClick={() => SignOut()}>Sign out</MenuItem>
+          <MenuItem onClick={() => SignOut()}>تسجيل الخروج</MenuItem>
         </MenuList>
       </Menu>
     </Flex>

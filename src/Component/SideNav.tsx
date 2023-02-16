@@ -194,7 +194,7 @@ function Greeting() {
   if (isLoggedIn == "false") {
     return <Buttons />;
   } else {
-    return <Profile />;
+    return <Box pr={{base:10}}><Profile /></Box> ;
   }
 }
 const MobileNav = (

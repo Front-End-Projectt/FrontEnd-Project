@@ -16,9 +16,15 @@ import {
     useColorModeValue,
     Link,
     InputLeftElement,
+    Alert,
+    AlertDescription,
+    AlertIcon,
+    AlertTitle,
+    useDisclosure,
   } from '@chakra-ui/react';
   import { useState } from 'react';
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+  import { useNavigate } from 'react-router-dom';
   
 interface DataTypse{
     name: string,
@@ -34,22 +40,47 @@ export default function Register() {
     const [email, setEmail] = React.useState("")
     const [password, setPass] = React.useState("")
     const api = "https://63e21e03109336b6cbffdd5b.mockapi.io/lap/signUp"
+    const [showAlert , setShowAlert] = useState(false)
+    const navigate = useNavigate()
+    
+    const customAlert = (des:string) => {    
+      return (
+        showAlert ? (
+        <Alert   status="error" bg={'white'} color={'red'} w={'100%'}>
+          <AlertDescription fontSize={'sm'}>{des}</AlertDescription>
+        </Alert>
+        ): (
+          <span></span>
+        )
+      ) 
+    }
+
+    
 
     const signUp = ()=>{
-        if(name.length >= 3 && email.length >=4 && password.length >= 8){
-            axios.post(api,{
+        if(name.length >= 3){
+          if (email.length >=4) {
+            if (password.length >= 8) {
+             axios.post(api,{
                 name,
                 email,
                 password
             }).then(res=>{
                 console.log(res)
-                localStorage.setItem("id", res.data.id) 
+                localStorage.setItem("id", res.data.id)
+                navigate('/signIn')
+
             })
             axios.get(api)
+            }else {  
+              setShowAlert(true)
+            }
+          } else {
+            setShowAlert(true)
+          } 
         }else{
-            alert("Please inter correct information")
+          setShowAlert(true)
         }
-  
     }
   
     return (
@@ -61,7 +92,6 @@ export default function Register() {
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
           <Stack align={'center'}>
             <Text fontSize={'lg'} color={'gray.600'}>
-              {/* to enjoy all of our cool features ✌️ */}
             </Text>
           </Stack>
           <Box
@@ -78,13 +108,16 @@ export default function Register() {
 
                 </Box>
               </HStack>
-              <FormControl width={330} id="firstName" isRequired>
+              <Box width={330}></Box>
+              <FormControl  id="firstName" isRequired>
                 <FormLabel>الاسم</FormLabel>
                 <Input type="text" value={name}  onChange={(e)=> setName(e.target.value)}/>
+                {name.length < 3 ? customAlert('الاسم يجب ان يكون اكثر 3 احرف'):null}
               </FormControl>
               <FormControl id="email" isRequired>
                 <FormLabel>البريد الالكتروني</FormLabel>
                 <Input type="email" value={email}  onChange={(e)=> setEmail(e.target.value)}/>
+                {email.length < 4 ? customAlert('البريد الالكتروني يجب ان يكون اكثر من 4 احرف'):null}
               </FormControl>
               <FormControl id="password" isRequired>
                 <FormLabel>كلمة المرور</FormLabel>
@@ -100,7 +133,8 @@ export default function Register() {
                     </Button>
                   </InputLeftElement>
                 </InputGroup>
-              </FormControl>
+                {password.length < 8 ? customAlert('كلمة المرور يجب ان تكون اكثر من 8 احرف'):null}
+              </FormControl>              
               <Stack spacing={10} pt={2}>
                 <Button onClick={signUp}
                   loadingText="Submitting"
