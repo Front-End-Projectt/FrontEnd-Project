@@ -26,6 +26,7 @@ import {
   StatNumber,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { useNavigate } from "react-router";
 
 
 
@@ -91,6 +92,7 @@ const Feature = ({ title, text, icon }: FeatureProps) => {
 {/************* End Features ***********/}
 
 function HomePage() {
+  const navigate = useNavigate();
   
   return(
    <>
@@ -103,20 +105,24 @@ function HomePage() {
         align={'center'}
         spacing={{ base: 8, md: 10 }}
         py={{ base: 20, md: 28 }}>
+          
         <Heading
           fontWeight={600}
           fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
           lineHeight={'110%'}>
-          الإهتمام بالتوحد{' '}
+            التوحد ليس بإعاقة,  
           <Text as={'span'} color={'rgba(0, 135, 85, 0.7)'}>
-            هو غايتنا
+             إنما قدرة مختلفة.
           </Text>
+
         </Heading>
         <Text color={'gray.500'} maxW={'3xl'}>
         نساعد الذين يعانون من طيف التوحد. نوفر العديد من المصادر التعليمية والاجتماعية التي تساعد الذين يعانون من طيف التوحد في التعامل مع مشكلاتهم. نوفر مجموعة من الأدوات المختلفة التي ترشد مصابي طيف التوحد. بالإضافة إلى ذلك. نقدم أيضا الوصول إلى المزيد من المجتمعات الاجتماعية والتعليمية التي تساعد الذين يعانون من طيف التوحد
         </Text>
         <Stack spacing={6} direction={'row'}>
-          <Button w={{base: 90 , sm:140}} 
+          <Button
+          onClick={()=> navigate("/Hospitals")}
+           w={{base: 90 , sm:140}} 
             rounded={'full'}
             px={6}
             colorScheme={'orange'}
@@ -124,7 +130,7 @@ function HomePage() {
             _hover={{ bg: 'rgba(0, 135, 85, 0.9)' }}>
             البدء
           </Button>
-          <Button w={{base: 90 , sm:140}} rounded={'full'} px={6}>
+          <Button    onClick={()=> navigate("/Team")} w={{base: 90 , sm:140}} rounded={'full'} px={6}>
             المزيد
           </Button>
         </Stack>

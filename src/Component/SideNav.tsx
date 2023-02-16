@@ -22,6 +22,7 @@ import {
   MenuItem,
   MenuList,
   Button,
+  Img,
 } from "@chakra-ui/react";
 import {
   FiTrendingUp,
@@ -126,9 +127,13 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       h="full"
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+        <Flex alignItems={'center'}>
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
           طيف
         </Text>
+        <Img width={50} src="https://cdn.discordapp.com/attachments/1067476928631677008/1075711578630008872/logo3.png"/>
+
+        </Flex>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link, i) => (
@@ -233,15 +238,20 @@ const MobileNav = (
         aria-label="open menu"
         icon={<FiMenu />}
       />
-      <Text
+
+         <Flex alignItems={'center'}>
+         <Text
         display={{ base: "flex", md: "none" }}
         fontSize="2xl"
         fontFamily="monospace"
         fontWeight="bold"
         
       >
-        طيف
+          طيف
       </Text>
+        <Img width={50}  display={{ base: "flex", md: "none" }} src="https://cdn.discordapp.com/attachments/1067476928631677008/1075711578630008872/logo3.png"/>
+
+        </Flex>
       {width > 474 ? Greeting() : null}
     </Flex>
   );

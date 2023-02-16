@@ -86,7 +86,7 @@ function PECS( ) {
 
 
   return (
-    <Box p={4}>
+    <Box p={10}>
       <Box bg="white" borderRadius={10} border="2px #E2E8F0 solid">
         <Stack spacing={3} direction='row' p={6} overflow="auto" h={250} >
               { cardSelector}
