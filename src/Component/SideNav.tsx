@@ -130,7 +130,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link, i) => (
-        <NavItem
+        <NavItem onClick={onClose}
           _hover={{
             backgroundColor: "rgba(0, 135, 85, 0.7)",
             color: "#ffffff",

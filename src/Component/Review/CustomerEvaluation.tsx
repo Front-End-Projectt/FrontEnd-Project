@@ -27,7 +27,7 @@ const Review = () => {
       let newIndex = index + 1;
       return checkNumber(newIndex);
     });
-}, 7000);
+}, 6000);
 
   const prevPerson = () => {
     setIndex((index) => {
