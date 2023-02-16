@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 
 import {
+  Image,
   IconButton,
   Avatar,
   Box,
@@ -16,6 +17,7 @@ import {
   useDisclosure,
   BoxProps,
   FlexProps,
+  Img,
   Menu,
   MenuButton,
   MenuDivider,
@@ -49,6 +51,7 @@ import { RiTeamLine } from 'react-icons/Ri'
 import { Route, Link, useLocation } from "react-router-dom";
 import { ReactJSXElementAttributesProperty } from "@emotion/react/types/jsx-namespace";
 import { ValueTarget } from "framer-motion";
+import logo from '../assets/logo.png'
 
 interface LinkItemProps {
   name: string;
@@ -129,7 +132,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Flex alignItems={'center'}>
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          طيف
+          <Image w={{ base: "5rem", sm: "8rem" }}  src={logo}></Image>
         </Text>
         <Img width={50} src="https://cdn.discordapp.com/attachments/1067476928631677008/1075711578630008872/logo3.png"/>
 
@@ -247,7 +250,9 @@ const MobileNav = (
         fontWeight="bold"
         
       >
-          طيف
+
+        <Image w={{ base: "5rem", sm: "8rem" }}  src={logo}></Image>
+
       </Text>
         <Img width={50}  display={{ base: "flex", md: "none" }} src="https://cdn.discordapp.com/attachments/1067476928631677008/1075711578630008872/logo3.png"/>
 

@@ -110,24 +110,29 @@ function HomePage() {
           fontWeight={600}
           fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
           lineHeight={'110%'}>
-            التوحد ليس بإعاقة,  
+
+          التوحّد ليس بإعاقة, {' '}
           <Text as={'span'} color={'rgba(0, 135, 85, 0.7)'}>
-             إنما قدرة مختلفة.
-          </Text>
+          إنما قدرة مختلفة  
+                  </Text>
 
         </Heading>
         <Text color={'gray.500'} maxW={'3xl'}>
         نساعد الذين يعانون من طيف التوحد. نوفر العديد من المصادر التعليمية والاجتماعية التي تساعد الذين يعانون من طيف التوحد في التعامل مع مشكلاتهم. نوفر مجموعة من الأدوات المختلفة التي ترشد مصابي طيف التوحد. بالإضافة إلى ذلك. نقدم أيضا الوصول إلى المزيد من المجتمعات الاجتماعية والتعليمية التي تساعد الذين يعانون من طيف التوحد
         </Text>
         <Stack spacing={6} direction={'row'}>
+
           <Button
           onClick={()=> navigate("/Hospitals")}
            w={{base: 90 , sm:140}} 
+
+          <Button w={139} 
+
             rounded={'full'}
             px={6}
             colorScheme={'orange'}
             bg={'rgba(0, 135, 85, 0.7)'}
-            _hover={{ bg: 'rgba(0, 135, 85, 0.9)' }}>
+            _hover={{ bg: 'rgba(0, 135, 85, 0.9)' }} >
             البدء
           </Button>
           <Button    onClick={()=> navigate("/Team")} w={{base: 90 , sm:140}} rounded={'full'} px={6}>
