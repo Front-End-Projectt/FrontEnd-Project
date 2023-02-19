@@ -45,7 +45,7 @@ import Profile from "./Authentication/Profile";
 import { BiBuildingHouse } from "react-icons/bi";
 import { CiHospital1, CiGlobe } from "react-icons/ci";
 import { BsCardText } from "react-icons/bs";
-import { RiTeamLine } from 'react-icons/Ri'
+import { RiTeamLine } from 'react-icons/ri'
 
 import { Route, Link, useLocation } from "react-router-dom";
 import { ReactJSXElementAttributesProperty } from "@emotion/react/types/jsx-namespace";
